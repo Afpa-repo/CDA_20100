@@ -1,5 +1,4 @@
 /* BASE.HTML */
-
 body
 {
     background-size: 100%;
@@ -54,7 +53,7 @@ body
     width: 100%;
 }
 
-#img2
+#img2, #img3, #img4
 {
     width: 100%;
     height: auto;
@@ -66,7 +65,7 @@ body
     padding: 1px;
 }
   
-#img5
+#img_saxo
 {
     width: 100%;
     height: auto;
