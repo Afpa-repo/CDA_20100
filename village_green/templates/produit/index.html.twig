@@ -3,8 +3,9 @@
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-    <h1>Produit index</h1>
-
+<div class="container">
+    <div class="row">
+    <h1>Liste des instruments</h1>
     <table class="table">
         <thead>
             <tr>
@@ -42,4 +43,6 @@
     </table>
 
     <a href="{{ path('produit_new') }}">Create new</a>
+    </div>
+    </div>
 {% endblock %}

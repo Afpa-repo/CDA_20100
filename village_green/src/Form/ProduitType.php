@@ -15,13 +15,13 @@ class ProduitType extends AbstractType
             ->add('proLib')
             ->add('proDescr')
             ->add('proPrixAchat')
-            ->add('proPhoto')
+            //->add('proPhoto')
             ->add('proStock')
             ->add('proActif')
-            ->add('proSRub')
-            ->add('contientLiv')
-            ->add('envFour')
-            ->add('seComposeDeCmd')
+            //->add('proSRub')
+            //->add('contientLiv')
+            //->add('envFour')
+            //->add('seComposeDeCmd')
         ;
     }
 

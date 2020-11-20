@@ -15,7 +15,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
 
-    <body class="row">
+    <body>
 
         <div class="container p-0" id="corps">
                 <header class="row m-0" id="navbar">
@@ -61,7 +61,14 @@
                                     <div class="collapse navbar-collapse" id="menu1">
 
                                         <ul class="navbar-nav ">
-                                            <a class="nav-link text-white" href="" title="Produits"><li class="nav-item ml-5 mr-5 mt-2 ">Produits</li></a>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle text-white" href="#" id="produitDropdown" 
+                                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produits</a>
+                                                    <div class="dropdown-menu" aria-labelledby="produitDropdown">
+                                                        <a class="dropdown-item" href="{{ path('produit_index') }}">Liste</a>
+                                                        <a class="dropdown-item" href="{{ path('produit_new') }}">Ajouter Produit(s)</a>
+                                                    </div>
+                                            </li>
                                             <a class="nav-link text-white" href="" title="Service"><li class="nav-item ml-5 mr-5 mt-2">Service</li></a>
                                             <a class="nav-link text-white" href="" title="Aide"><li class="nav-item ml-5 mr-5 mt-2 ">Aide</li></a>
                                             <a class="nav-link text-white" href="" title="A propos"><li class="nav-item ml-5 mr-5 mt-2">A propos</li></a>
