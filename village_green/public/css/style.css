@@ -2,6 +2,7 @@
 
 body
 {
+    background-image: url('../img/BACKGROUND/background_village.png');
     background-size: 100%;
     background-attachment: fixed;
 }
@@ -13,6 +14,7 @@ body
 
 #navbar
 {
+    background-image: url('../img/HEADER/3_bandes.png');
     background-repeat: no-repeat;
     max-width: 100%;
 }
