@@ -15,12 +15,12 @@
         {% block stylesheets %}{% endblock %}
     </head>
 
-    <body style="background-image: url('img/BACKGROUND/background_village.png');" class="row">
+    <body class="row">
 
         <div class="container p-0" id="corps">
-                <header class="row m-0" style="background-image: url('img/HEADER/3_bandes.png');" id="navbar">
+                <header class="row m-0" id="navbar">
                     <div id="logo" class="col-4 p-0">
-                        <img src="img/HEADER/logo_village.png" alt="logo">
+                        <img src="{{ asset('img/HEADER/logo_village.png') }}" alt="logo">
                     </div>
 
                     <div class="col-8 p-0" >
@@ -39,8 +39,8 @@
                                     <ul class="navbar-nav ">
                                         <a class="nav-link text-dark" href="" title="Infos"><li class="nav-item">Infos</li></a>
                                         <a class="nav-link text-dark" href="" title="Espace client"><li class="nav-item">Espace client</li></a>
-                                        <a class="nav-link text-dark" href="" title="Panier"><li class="nav-item mr-5"><img src="img/HEADER/picto_panier.png" alt="panier"></li></a>
-                                        <a class="nav-link text-dark" href="" title="Pays"><li class="nav-item ml-5"><img src="img/HEADER/picto_pays.png" alt="pays"></li></a>
+                                        <a class="nav-link text-dark" href="" title="Panier"><li class="nav-item mr-5"><img src="{{ asset('img/HEADER/picto_panier.png') }}" alt="panier"></li></a>
+                                        <a class="nav-link text-dark" href="" title="Pays"><li class="nav-item ml-5"><img src="{{ asset('img/HEADER/picto_pays.png') }}" alt="pays"></li></a>
                                     </ul>
 
                                     </div>
@@ -101,15 +101,13 @@
                         </div>
                     </div>
                 </header>
-        </div>
-
     {% block body %}{% endblock %}
-
-        <div class="container p-0  " id="foot">
+        </div>
+        <div class= "container p-0" id="foot">
             <footer>
-                <div class="row  mt-3">
+                <div class="row mt-3">
                     <div class="col-12 p-0">
-                        <img src="img/FOOTER/footer_SIMPLE.png"class="img-fluid" id="img8" alt="footer">
+                        <img src="{{ asset('img/FOOTER/footer_SIMPLE.png') }}" class="img-fluid" id="img8" alt="footer">
                     </div>
                 </div>
             </footer>
