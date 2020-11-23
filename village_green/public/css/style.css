@@ -1,10 +1,14 @@
-/* BASE.HTML */
-
+/**************************************************** BASE.HTML *****************************************************/
 body
 {
     background-image: url('../img/BACKGROUND/background_village.png');
     background-size: 100%;
     background-attachment: fixed;
+    background-image: url('../img/BACKGROUND/background_village.png') !important;
+}
+
+header{
+    background-image: url('../img/HEADER/3_bandes.png');
 }
 
 #corps
@@ -25,7 +29,7 @@ body
     text-align: right;
 }
 
- #nav2
+#nav2
 {
     font-size: 16pt;
 }
@@ -93,8 +97,19 @@ h2
     text-align: center;
 }
 
-/* INDEX.HTML */
+#produitDropdown{
+    margin-top: 8px;
+}
+
+/*********************************************************** HOME/INDEX.HTML ********************************************************/
 
 #corps_index {
     background-color: #e8e9ea;
+}
+
+/****************************************************************** PRODUIT/INDEX.HTML *************************************************/
+
+.tableProduit{
+    table-layout: auto;
+    width: 100%;
 }

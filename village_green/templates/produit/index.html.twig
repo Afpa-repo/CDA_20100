@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des instruments{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h1>Liste des instruments</h1>
+            <div class="card-deck">
+            {% for produit in produits %}
+                <div class="card">
+                    <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ produit.proLib }}</h5>
+                        <p class="card-text">{{ produit.proDescr }}</p>
+                        <p class="card-text">{{ produit.proPrixAchat }}</p>
+                        </div>
+            {% else %}
+                <tr>
+                    <td colspan="8">Aucun produit en stock</td>
+                </tr>
+            {% endfor %}
+            </div>
+                <a href="{{ path('produit_new') }}">Create new</a>
+            </div>
+        </div>
+</div>
+{% endblock %}
+    
+
+            {# <table class="tableProduit table-bordered table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>ID Produit</th>
+                        <th>Nom du produit</th>
+                        <th>Description</th>
+                        <th>Prix d'achat</th>
+                        <th>Image</th>
+                        <th>En stock</th>
+                        <th>En ligne</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for produit in produits %}
+                    <tr>
+                        <td>{{ produit.proId }}</td>
+                        <td>{{ produit.proLib }}</td>
+                        <td>{{ produit.proDescr }}</td>
+                        <td>{{ produit.proPrixAchat }}</td>
+                        <td>{{ produit.proPhoto }}</td>
+                        <td>{{ produit.proStock }}</td>
+                        <td>{{ produit.proActif ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <a href="{{ path('produit_show', {'proId': produit.proId}) }}">show</a>
+                            <a href="{{ path('produit_edit', {'proId': produit.proId}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table> #}
+    

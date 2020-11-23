@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
 -- Généré le : ven. 20 nov. 2020 à 15:53
 -- Version du serveur :  5.7.24
--- Version de PHP : 7.4.4
+-- Version de PHP : 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -346,51 +345,6 @@ INSERT INTO `produit` (`pro_id`, `pro_lib`, `pro_descr`, `pro_prix_achat`, `pro_
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `produits_fournisseurs`
--- (Voir ci-dessous la vue réelle)
---
-CREATE TABLE `produits_fournisseurs` (
-`pro_id` int(11)
-,`pro_lib` varchar(50)
-,`pro_descr` varchar(250)
-,`pro_prix_achat` decimal(10,2)
-,`pro_photo` varchar(250)
-,`pro_stock` int(11)
-,`pro_actif` tinyint(1)
-,`pro_s_rub_id` int(11)
-,`env_four_id` int(11)
-,`env_pro_id` int(11)
-,`env_qte` int(11)
-,`four_id` int(11)
-,`four_nom` varchar(50)
-,`four_type` varchar(50)
-);
-
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `prod_sr_r`
--- (Voir ci-dessous la vue réelle)
---
-CREATE TABLE `prod_sr_r` (
-`pro_id` int(11)
-,`pro_lib` varchar(50)
-,`pro_descr` varchar(250)
-,`pro_prix_achat` decimal(10,2)
-,`pro_photo` varchar(250)
-,`pro_stock` int(11)
-,`pro_actif` tinyint(1)
-,`pro_s_rub_id` int(11)
-,`s_rub_id` int(11)
-,`s_rub_nom` varchar(50)
-,`s_rub_rub_id` int(11)
-,`rub_id` int(11)
-,`rub_nom` varchar(50)
-);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `rubrique`
 --
 
@@ -518,24 +472,6 @@ INSERT INTO `sous_rubrique` (`s_rub_id`, `s_rub_nom`, `s_rub_rub_id`) VALUES
 (44, 'Protections Auditives', 9),
 (45, 'Supports de Stockage', 9),
 (46, 'Métronomes', 9);
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `produits_fournisseurs`
---
-DROP TABLE IF EXISTS `produits_fournisseurs`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `produits_fournisseurs`  AS  select `produit`.`pro_id` AS `pro_id`,`produit`.`pro_lib` AS `pro_lib`,`produit`.`pro_descr` AS `pro_descr`,`produit`.`pro_prix_achat` AS `pro_prix_achat`,`produit`.`pro_photo` AS `pro_photo`,`produit`.`pro_stock` AS `pro_stock`,`produit`.`pro_actif` AS `pro_actif`,`produit`.`pro_s_rub_id` AS `pro_s_rub_id`,`envoie`.`env_four_id` AS `env_four_id`,`envoie`.`env_pro_id` AS `env_pro_id`,`envoie`.`env_qte` AS `env_qte`,`fournisseur`.`four_id` AS `four_id`,`fournisseur`.`four_nom` AS `four_nom`,`fournisseur`.`four_type` AS `four_type` from ((`produit` join `envoie`) join `fournisseur`) where ((`produit`.`pro_id` = `envoie`.`env_pro_id`) and (`envoie`.`env_four_id` = `fournisseur`.`four_id`)) ;
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `prod_sr_r`
---
-DROP TABLE IF EXISTS `prod_sr_r`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prod_sr_r`  AS  select `produit`.`pro_id` AS `pro_id`,`produit`.`pro_lib` AS `pro_lib`,`produit`.`pro_descr` AS `pro_descr`,`produit`.`pro_prix_achat` AS `pro_prix_achat`,`produit`.`pro_photo` AS `pro_photo`,`produit`.`pro_stock` AS `pro_stock`,`produit`.`pro_actif` AS `pro_actif`,`produit`.`pro_s_rub_id` AS `pro_s_rub_id`,`sous_rubrique`.`s_rub_id` AS `s_rub_id`,`sous_rubrique`.`s_rub_nom` AS `s_rub_nom`,`sous_rubrique`.`s_rub_rub_id` AS `s_rub_rub_id`,`rubrique`.`rub_id` AS `rub_id`,`rubrique`.`rub_nom` AS `rub_nom` from ((`produit` join `sous_rubrique`) join `rubrique`) where ((`rubrique`.`rub_id` = `sous_rubrique`.`s_rub_id`) and (`sous_rubrique`.`s_rub_id` = `produit`.`pro_s_rub_id`)) ;
 
 --
 -- Index pour les tables déchargées
