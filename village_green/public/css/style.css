@@ -107,7 +107,13 @@ h2
 
 /****************************************************************** PRODUIT/INDEX.HTML *************************************************/
 
-.tableProduit{
-    table-layout: auto;
-    width: 100%;
+.card{
+    height: 300px;
+    width: 300px;
+    margin: 20px;
+}
+
+#prodPicture{
+    height: 200px;
+    width: 100px;
 }
