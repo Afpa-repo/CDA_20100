@@ -108,12 +108,12 @@ h2
 /****************************************************************** PRODUIT/INDEX.HTML *************************************************/
 
 .card{
-    height: 300px;
-    width: 300px;
-    margin: 20px;
+    height: 515px;
+    width: 350px;
 }
 
-#prodPicture{
-    height: 200px;
-    width: 100px;
+.card-img-top{
+    width: 100%;
+    height: 30vh;
+    object-fit: contain;
 }
