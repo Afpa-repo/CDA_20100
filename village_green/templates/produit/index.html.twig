@@ -3,64 +3,39 @@
 {% block title %}Liste des instruments{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <h1>Liste des instruments</h1>
-            <div class="card-deck">
-            {% for produit in produits %}
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">{{ produit.proLib }}</h5>
-                        <p class="card-text">{{ produit.proDescr }}</p>
-                        <p class="card-text">{{ produit.proPrixAchat }}</p>
-                        </div>
-            {% else %}
-                <tr>
-                    <td colspan="8">Aucun produit en stock</td>
-                </tr>
-            {% endfor %}
-            </div>
-                <a href="{{ path('produit_new') }}">Create new</a>
-            </div>
-        </div>
-</div>
-{% endblock %}
-    
 
-            {# <table class="tableProduit table-bordered table-striped text-center">
-                <thead>
-                    <tr>
-                        <th>ID Produit</th>
-                        <th>Nom du produit</th>
-                        <th>Description</th>
-                        <th>Prix d'achat</th>
-                        <th>Image</th>
-                        <th>En stock</th>
-                        <th>En ligne</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for produit in produits %}
-                    <tr>
-                        <td>{{ produit.proId }}</td>
-                        <td>{{ produit.proLib }}</td>
-                        <td>{{ produit.proDescr }}</td>
-                        <td>{{ produit.proPrixAchat }}</td>
-                        <td>{{ produit.proPhoto }}</td>
-                        <td>{{ produit.proStock }}</td>
-                        <td>{{ produit.proActif ? 'Yes' : 'No' }}</td>
-                        <td>
-                            <a href="{{ path('produit_show', {'proId': produit.proId}) }}">show</a>
-                            <a href="{{ path('produit_edit', {'proId': produit.proId}) }}">edit</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="8">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table> #}
-    
+<h1 class="text-center mb-5">Nos instruments</h1>
+
+<div class="row d-flex justify-content-center">
+
+{% for produit in produits %} <!-- produits fait référence à $produits dans ProduitController.php -->
+
+    <div class="card text-center mb-2 ml-2 mr-2">
+            <div class="card-header bg-white">
+                <img src="{{asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="Photo disque">
+            </div>
+
+            <div class="card-body bg-light">
+                <h5 class="card-title">{{ produit.proLib }}</h5>
+                <p class="card-text text-truncate">Prix : {{ produit.proPrixAchat }} €</p>
+                <p class="card-text text-truncate">Stock : {{ produit.proStock }} pièce(s)</p>
+            </div>
+
+            <div class="card-footer bg-white">
+                <a href="" type="button" class="btn btn-info">PLUS D'INFOS</a>
+                <a href="" type="button" class="btn btn-success">AJOUTER AU PANIER</a>
+            </div>
+    </div>
+
+{% else %}
+    <tr>
+        <td colspan="8">no records found</td>
+    </tr>
+{% endfor %}
+
+<!-- Affichage de la pagination des produits -->
+{{ knp_pagination_render(produits) }}
+
+</div>
+
+{% endblock %}
