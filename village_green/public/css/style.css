@@ -1,0 +1,119 @@
+/**************************************************** BASE.HTML *****************************************************/
+body
+{
+    background-size: 100%;
+    background-attachment: fixed;
+    background-image: url('../img/BACKGROUND/background_village.png') !important;
+}
+
+header{
+    background-image: url('../img/HEADER/3_bandes.png');
+}
+
+#corps
+{
+    background-color: #e8e9ea;
+}
+
+#navbar
+{
+    background-repeat: no-repeat;
+    max-width: 100%;
+}
+
+#nav1
+{
+    float: right;
+    text-align: right;
+}
+
+#nav2
+{
+    font-size: 16pt;
+}
+
+#nav3
+{
+    font-size: 13pt;
+}
+
+#cliquez
+{
+    float: left;
+}
+
+#guitare
+{
+    width: 100%;
+    height: 100%;
+}
+
+#promo
+{
+    float: right;
+}
+
+#centre
+{
+    width: 100%;
+}
+
+#img2, #img3, #img4
+{
+    width: 100%;
+    height: auto;
+    padding: 1px;
+}
+
+#imgguit
+{
+    padding: 1px;
+}
+
+#img_saxo
+{
+    width: 100%;
+    height: auto;
+}
+
+#img9
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#rowb
+{
+    height: auto;
+}
+
+h2
+{
+    text-align: center;
+}
+
+#produitDropdown{
+    margin-top: 8px;
+}
+
+/*********************************************************** HOME/INDEX.HTML ********************************************************/
+
+#corps_index {
+    background-color: #e8e9ea;
+}
+
+/****************************************************************** PRODUIT/INDEX.HTML *************************************************/
+
+.card{
+    height: 515px;
+    width: 350px;
+}
+
+.card-img-top{
+    width: 100%;
+    height: 30vh;
+    object-fit: contain;
+}
