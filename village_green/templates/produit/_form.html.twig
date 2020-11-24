@@ -1,4 +1,45 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="row">
+    <div class="col">
+        {{ form_row(form.proLib) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.proDescr) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.proPrixAchat) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.proPhoto) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.proStock) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.proActif) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {{ form_row(form.proSRub) }}
+    </div>
+</div>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
