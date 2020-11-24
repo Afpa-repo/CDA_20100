@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="ChangeListManager">
-    <list default="true" id="1435f11f-2388-4536-965f-4fe1b2f066ff" name="Default Changelist" comment="" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/vendor/doctrine/common" />
@@ -138,79 +106,5 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
     </include_path>
-  </component>
-  <component name="ProjectId" id="1kh2z9EJOkLbgHXNnsw2sW86TIH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="1435f11f-2388-4536-965f-4fe1b2f066ff" name="Default Changelist" comment="" />
-      <created>1606138781753</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1606138781753</updated>
-      <workItem from="1606138792586" duration="7450000" />
-      <workItem from="1606202731053" duration="752000" />
-      <workItem from="1606203624923" duration="1464000" />
-    </task>
-    <task id="LOCAL-00001" summary="Mise en forme index Produits ok">
-      <created>1606146557970</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1606146557970</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Mise en forme index Produits ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mise en forme index Produits ok" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="656" y="204" key="FileChooserDialogImpl" timestamp="1606139164522">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="656" y="204" key="FileChooserDialogImpl/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606139164522" />
-    <state x="301" y="79" key="SettingsEditor" timestamp="1606139275425">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="301" y="79" key="SettingsEditor/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606139275425" />
-    <state x="236" y="154" key="Vcs.Push.Dialog.v2" timestamp="1606146567493">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="236" y="154" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606146567493" />
-    <state x="571" y="308" width="621" height="393" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1606139274134">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="571" y="308" width="621" height="393" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606139274134" />
   </component>
 </project>
