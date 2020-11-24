@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des instruments{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Nos instruments</h1>
+    <div class="row d-flex justify-content-center">
+        {% for produit in produits %}
+            <div class="card text-center mb-2 ml-2 mr-2">
+                <div class="card-header bg-white">
+                <img src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="photo_produit">
+                </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ produit.proLib }}</h5>
+                    <p class="card-text">{{ produit.proPrixAchat }}&nbsp;&euro;</p>
+            </div>
+                <div class="card-footer">
+                    <a href="#" type="button" class="btn btn-info">Détails</a>
+                    <a href="#" type="button" class="btn btn-success">Ajouter au panier</a>
+                </div>
+    </div>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun article trouvé</td>
+            </tr>
+        {% endfor %}
+        {{ knp_pagination_render(produits) }}
+    </div>
+{% endblock %}
+    
+
+            {# <table class="tableProduit table-bordered table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>ID Produit</th>
+                        <th>Nom du produit</th>
+                        <th>Description</th>
+                        <th>Prix d'achat</th>
+                        <th>Image</th>
+                        <th>En stock</th>
+                        <th>En ligne</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for produit in produits %}
+                    <tr>
+                        <td>{{ produit.proId }}</td>
+                        <td>{{ produit.proLib }}</td>
+                        <td>{{ produit.proDescr }}</td>
+                        <td>{{ produit.proPrixAchat }}</td>
+                        <td>{{ produit.proPhoto }}</td>
+                        <td>{{ produit.proStock }}</td>
+                        <td>{{ produit.proActif ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <a href="{{ path('produit_show', {'proId': produit.proId}) }}">show</a>
+                            <a href="{{ path('produit_edit', {'proId': produit.proId}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table> #}
+    
