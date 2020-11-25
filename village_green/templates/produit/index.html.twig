@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des instruments{% endblock %}
+{% block title %}Notre catalogue{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Nos instruments</h1>
+    <h1 class="text-center">Notre catalogue</h1>
     <div class="row d-flex justify-content-center">
         {% for produit in produits %}
             <div class="card text-center mb-2 ml-2 mr-2">
@@ -24,7 +24,9 @@
                 <td colspan="8">Aucun article trouvé</td>
             </tr>
         {% endfor %}
-        {{ knp_pagination_render(produits) }}
+    </div>
+    <div class="row d-flex justify-content-center">
+    {{ knp_pagination_render(produits) }}
     </div>
 {% endblock %}
     

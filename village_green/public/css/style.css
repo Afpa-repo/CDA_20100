@@ -117,3 +117,26 @@ h2
     height: 30vh;
     object-fit: contain;
 }
+
+/****************************************************************** PRODUIT/_FORM.HTML *************************************************/
+
+#btn_ajouter, #btn_retour{
+    margin-bottom: 20px;
+}
+
+#btn_supprimer{
+    margin-top: -60px;
+}
+
+/****************************************************************** PRODUIT/SHOW.HTML *************************************************/
+
+#btn_modif, #btn_retour2{
+    margin-bottom: 20px;
+}
+
+#img_show{
+    width: 100%;
+    height: 30vh;
+    object-fit: contain;
+    margin-top: 10px;
+}
