@@ -32,7 +32,7 @@ class ProduitController extends AbstractController
         $produits = $paginator->paginate(
             $donnees, // Requête contenant les données à paginer (ici nos produits)
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-            9 // Nombre de résultats par page
+            15 // Nombre de résultats par page
         );
 
         return $this->render('produit/index.html.twig', [
@@ -179,6 +179,12 @@ class ProduitController extends AbstractController
             $entityManager->remove($produit);
             $entityManager->flush();
         }
+
+        // Message de succès de suppression du produit
+        $this->addFlash(
+            'success',
+            'Produit supprimé avec succès !!'
+        );
 
         return $this->redirectToRoute('produit_index');
     }
