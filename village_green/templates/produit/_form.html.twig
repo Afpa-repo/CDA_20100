@@ -41,5 +41,7 @@
     </div>
 </div>
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <a type="button" class="btn btn-secondary" id="btn_retour" href="{{ path('produit_index') }}">RETOUR</a>
+    <button class="btn btn-success" id="btn_ajouter">{{ button_label|default('AJOUTER') }}</button>
+
 {{ form_end(form) }}

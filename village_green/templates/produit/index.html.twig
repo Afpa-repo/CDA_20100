@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<h1 class="text-center mb-5">Nos instruments</h1>
+<h1 class="text-center mb-5">Notre catalogue</h1>
 
 <div class="row d-flex justify-content-center">
 
@@ -22,7 +22,7 @@
             </div>
 
             <div class="card-footer bg-white">
-                <a href="" type="button" class="btn btn-info">DETAILS</a>
+                <a href="{{ path('produit_show', {'proId': produit.proId}) }}" type="button" class="btn btn-info">DETAILS</a>
                 <a href="" type="button" class="btn btn-success">AJOUTER AU PANIER</a>
             </div>
     </div>
@@ -33,9 +33,12 @@
     </tr>
 {% endfor %}
 
-<!-- Affichage de la pagination des produits -->
-{{ knp_pagination_render(produits) }}
+</div>
 
+<div class="row d-flex justify-content-center">
+<!-- Affichage de la pagination des produits -->
+<!-- Mise en forme bootstrap avec la création du fichier knp_paginator.yaml dans config/packages -->
+{{ knp_pagination_render(produits) }}
 </div>
 
 {% endblock %}

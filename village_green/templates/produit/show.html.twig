@@ -3,44 +3,46 @@
 {% block title %}Produit{% endblock %}
 
 {% block body %}
-    <h1>Produit</h1>
+    <h1 class="text-center mb-5">{{ produit.proLib }}</h1>
+    <img id="img_show" src="{{asset('img/PRODUITS/')}}{{ produit.proPhoto }}" alt="Photo détail">
 
-    <table class="table">
+<div class="container">
+
+    <table class="table table-striped">
         <tbody>
-            <tr>
+            <!-- <tr>
                 <th>ProId</th>
                 <td>{{ produit.proId }}</td>
             </tr>
             <tr>
-                <th>ProLib</th>
+                <th>Libellé</th>
                 <td>{{ produit.proLib }}</td>
+            </tr> -->
+            <tr>
+                <th>Description</th>
+                <td class="col-lg">{{ produit.proDescr }}</td>
             </tr>
             <tr>
-                <th>ProDescr</th>
-                <td>{{ produit.proDescr }}</td>
+                <th>Prix</th>
+                <td class="col-lg">{{ produit.proPrixAchat }} €</td>
             </tr>
             <tr>
-                <th>ProPrixAchat</th>
-                <td>{{ produit.proPrixAchat }}</td>
+                <th>Stock</th>
+                <td class="col-lg">{{ produit.proStock }} pièce(s)</td>
             </tr>
-            <tr>
-                <th>ProPhoto</th>
-                <td>{{ produit.proPhoto }}</td>
-            </tr>
-            <tr>
-                <th>ProStock</th>
-                <td>{{ produit.proStock }}</td>
-            </tr>
-            <tr>
+            <!-- <tr>
                 <th>ProActif</th>
                 <td>{{ produit.proActif ? 'Yes' : 'No' }}</td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 
-    <a href="{{ path('produit_index') }}">back to list</a>
+    <a class="btn btn-secondary" id="btn_retour2" href="{{ path('produit_index') }}">RETOUR</a>
 
-    <a href="{{ path('produit_edit', {'proId': produit.proId}) }}">edit</a>
+    <a class="btn btn-primary" id="btn_modification" href="{{ path('produit_edit', {'proId': produit.proId}) }}">MODIFICATION</a>
 
     {{ include('produit/_delete_form.html.twig') }}
+
+</div>
+
 {% endblock %}
