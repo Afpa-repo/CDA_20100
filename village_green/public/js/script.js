@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    let $card = $('.guit_bass');
+    let $card = $('.instru');
 
     $card.click(function (e){
 
