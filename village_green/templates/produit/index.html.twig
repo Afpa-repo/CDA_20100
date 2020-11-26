@@ -16,7 +16,7 @@
             </div>
                 <div class="card-footer">
                     <a href="#" type="button" class="btn btn-info">Détails</a>
-                    <a href="#" type="button" class="btn btn-success">Ajouter au panier</a>
+                    <a href="{{ path('add_to_cart', {'id': produit.proId}) }}" type="button" class="btn btn-success">Ajouter au panier</a>
                 </div>
     </div>
         {% else %}
