@@ -92,22 +92,21 @@
 
                                         <ul class="navbar-nav ">
                                             <div class="dropdown">
-                                            <a class="nav-link text-white" href="{{ path('produit_index') }}" data-filter=".Guitares" title="Guitares"><li class="nav-item mt-2 ml-1 dropbtn">Guit/Bass</li></a>
+                                            <a class="nav-link text-white" href="#" title="Guitares"><li class="nav-item mt-2 ml-1 dropbtn">Guit/Bass</li></a>
                                                 <div class="dropdown-content instru">
-                                                    <a href="#" data-filter=".Guitares">Guitares</a>
+                                                    <a href="#" data-filter=".Guitares, .Basses, .Ukulélés">Voir tout</a>
                                                     <a href="#" data-filter=".Guitares.Electriques">Guitares Electriques</a>
                                                     <a href="#" data-filter=".Guitares.Classiques">Guitares Classiques</a>
                                                     <a href="#" data-filter=".Guitares.Acoustiques">Guitares Acoustiques</a>
-                                                    <a href="#" data-filter=".Basses">Basses</a>
                                                     <a href="#" data-filter=".Basses.Electriques">Basses Electriques</a>
                                                     <a href="#" data-filter=".Basses.Acoustiques">Basses Acoustiques</a>
                                                     <a href="#" data-filter=".Ukulélés">Ukulélés</a>
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="{{ path('produit_index') }}" title="Batteris"><li class="nav-item mt-2 ml-1 dropbtn">Batteries</li></a>
+                                                <a class="nav-link text-white" href="#" title="Batteries"><li class="nav-item mt-2 ml-1 dropbtn">Batteries</li></a>
                                                 <div class="dropdown-content instru">
-                                                    <a href="#" data-filter=".Batteries">Batteries</a>
+                                                    <a href="#" data-filter=".Batteries, .Cymbales, .Baguettes, .Percussions">Voir tout</a>
                                                     <a href="#" data-filter=".Batteries.Acoustiques">Batteries Acoustiques</a>
                                                     <a href="#" data-filter=".Batteries.Electroniques">Batteries Electroniques</a>
                                                     <a href="#" data-filter=".Cymbales">Cymbales</a>
@@ -115,10 +114,50 @@
                                                     <a href="#" data-filter=".Percussions">Percussions</a>
                                                 </div>
                                             </div>
-                                            <a class="nav-link text-white" href="" title="Clavier"><li class="nav-item ml-2 mt-2">Clavier</li></a>
-                                            <a class="nav-link text-white" href="" title="Studio"><li class="nav-item ml-2 mt-2">Studio</li></a>
-                                            <a class="nav-link text-white" href="" title="Sono"><li class="nav-item ml-2 mt-2">Sono</li></a>
-                                            <a class="nav-link text-white" href="" title="Eclairage"><li class="nav-item ml-2 mt-2">Eclairage</li></a>
+                                            <div class="dropdown">
+                                                <a class="nav-link text-white" href="#" title="Clavier"><li class="nav-item mt-2 ml-1 dropbtn">Claviers</li></a>
+                                                <div class="dropdown-content instru">
+                                                    <a href="#" data-filter=".Claviers, .Synthétiseurs, .Pianos">Voir tout</a>
+                                                    <a href="#" data-filter=".Claviers.Arrangeurs">Claviers Arrangeurs</a>
+                                                    <a href="#" data-filter=".Synthétiseurs">Synthétiseurs</a>
+                                                    <a href="#" data-filter=".Claviers .Maîtres">Claviers Maîtres</a>
+                                                    <a href="#" data-filter=".Pianos.de.Scènes">Pianos de Scènes</a>
+                                                    <a href="#" data-filter=".Pianos.à.Queues">Pianos à Queue</a>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown">
+                                                <a class="nav-link text-white" href="#" title="Studio"><li class="nav-item mt-2 ml-1 dropbtn">Studio</li></a>
+                                                <div class="dropdown-content instru">
+                                                    <a href="#" data-filter=".Interfaces, .Enceintes, .Microphones, .Logiciels, .Préamplificateurs">Voir tout</a>
+                                                    <a href="#" data-filter=".Interfaces.Audio">Interfaces Audio</a>
+                                                    <a href="#" data-filter=".Enceintes.de.Monitoring">Enceintes de Monitoring</a>
+                                                    <a href="#" data-filter=".Microphones">Microphones</a>
+                                                    <a href="#" data-filter=".Logiciels.Studio">Logiciels Studio</a>
+                                                    <a href="#" data-filter=".Préamplificateurs.Studio">Préamplificateurs Studio</a>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown">
+                                                <a class="nav-link text-white" href="#" title="Sono"><li class="nav-item mt-2 ml-1 dropbtn">Sono</li></a>
+                                                <div class="dropdown-content instru">
+                                                    <a href="#" data-filter=".Sonorisation, .Mixage, .Amplificateurs, .Processeurs">Voir tout</a>
+                                                    <a href="#" data-filter=".Sets.de.Sonorisation.Complets">Sets de Sonorisation Complets</a>
+                                                    <a href="#" data-filter=".Enceintes.de.Sonorisation">Enceintes de Sonorisation</a>
+                                                    <a href="#" data-filter=".Tables.de.Mixage">Tables de Mixage</a>
+                                                    <a href="#" data-filter=".Amplificateurs.de.Puissance">Amplificateurs de Puissance</a>
+                                                    <a href="#" data-filter=".Processeurs.de.Diffusion">Processeurs de Diffusion</a>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown">
+                                                <a class="nav-link text-white" href="#" title="Sono"><li class="nav-item mt-2 ml-1 dropbtn">Eclairage</li></a>
+                                                <div class="dropdown-content instru">
+                                                    <a href="#" data-filter=".Projecteurs, .Eclairage, .Machine.à.Fumée, .Lasers, .Stroboscopes">Voir tout</a>
+                                                    <a href="#" data-filter=".Projecteurs">Projecteurs</a>
+                                                    <a href="#" data-filter=".Eclairage">Eclairage</a>
+                                                    <a href="#" data-filter=".Machine.à.Fumée">Machine à Fumée</a>
+                                                    <a href="#" data-filter=".Lasers">Lasers</a>
+                                                    <a href="#" data-filter=".Stroboscopes">Stroboscopes</a>
+                                                </div>
+                                            </div>
                                             <a class="nav-link text-white" href="" title="DJ"><li class="nav-item ml-2 mt-2">DJ</li></a>
                                             <a class="nav-link text-white" href="" title="Cases"><li class="nav-item ml-2 mt-2">Cases</li></a>
                                             <a class="nav-link text-white" href="" title="Accessoires"><li class="nav-item ml-2 mt-2 ">Accessoires</li></a>
