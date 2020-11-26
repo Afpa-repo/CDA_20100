@@ -4,13 +4,10 @@ $(document).ready(function(){
 
     $card.click(function (e){
 
-        $('.guit_bass').removeClass('active');
-        e.target.classList.add('active');
-
         let selector = $(e.target).attr('data-filter');
         $('.grid').isotope({
             filter : selector
-        });
+        }).css({ margin : '20px' });
 
         return false;
     })
