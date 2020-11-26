@@ -6,22 +6,22 @@
 
 <h1 class="text-center mb-5">Notre catalogue</h1>
 
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center grid"> <!-- grid fait référence au .grid appelé dans le script.js -->
 
 {% for produit in produits %} <!-- produits fait référence à $produits dans ProduitController.php -->
 
-    <div class="card text-center mb-2 ml-2 mr-2">
-            <div class="card-header bg-white">
+    <div class="card text-center mb-2 ml-2 mr-2 {{ produit.proSRub }}">
+            <div class="card-header bg-white {{ produit.proSRub }}">
                 <img src="{{asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="Photo disque">
             </div>
 
-            <div class="card-body bg-light">
+            <div class="card-body bg-light {{ produit.proSRub }}">
                 <h5 class="card-title">{{ produit.proLib }}</h5>
                 <p class="card-text text-truncate">Prix : {{ produit.proPrixAchat }} €</p>
                 <p class="card-text text-truncate">Stock : {{ produit.proStock }} pièce(s)</p>
             </div>
 
-            <div class="card-footer bg-white">
+            <div class="card-footer bg-white {{ produit.proSRub }}">
                 <a href="{{ path('produit_show', {'proId': produit.proId}) }}" type="button" class="btn btn-info">DETAILS</a>
                 <a href="" type="button" class="btn btn-success">AJOUTER AU PANIER</a>
             </div>
