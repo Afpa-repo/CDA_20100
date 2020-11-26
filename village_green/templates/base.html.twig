@@ -99,22 +99,21 @@
                                 
                             <ul class="navbar-nav">
                                 <div class="dropdown">
-                                    <a class="nav-link text-white" href="{{ path('produit_index') }}" title="Guitares"><li class="nav-item mt-2 ml-1 dropbtn">Guit/Bass</li></a>
+                                    <a class="nav-link text-white" href="#" title="Guitares"><li class="nav-item mt-2 ml-1 dropbtn">Guit/Bass</li></a>
                                         <div class="dropdown-content instru"> <!-- instru fait référence au .instru appelé dans le script.js -->
-                                            <a href="#" data-filter=".Guitares">Guitares</a> <!-- .Guitares fait appel au nom de la rubrique Guitare dans la BDD -->
+                                            <a href="#" data-filter=".Guitares, .Basses, .Ukulélés">Voir tout</a> <!-- .Guitares fait appel au nom de la rubrique Guitare dans la BDD -->
                                             <a href="#" data-filter=".Guitares.Electriques">Guitares Electriques</a> <!-- .Guitares.Electriques fait appel au nom de la sous-rubrique Guitares Electriques dans la BDD -->
                                             <a href="#" data-filter=".Guitares.Classiques">Guitares Classiques</a>
                                             <a href="#" data-filter=".Guitares.Acoustiques">Guitares Acoustiques</a>
-                                            <a href="#" data-filter=".Basses">Basses</a>
                                             <a href="#" data-filter=".Basses.Electriques">Basses Electriques</a>
                                             <a href="#" data-filter=".Basses.Acoustiques">Basses Acoustiques</a>
                                             <a href="#" data-filter=".Ukulélés">Ukulélés</a>
                                         </div>
                                 </div>
                                 <div class="dropdown">
-                                    <a class="nav-link text-white" href="{{ path('produit_index') }}" title="Batteries"><li class="nav-item mt-2 ml-1 dropbtn">Batteries</li></a>
+                                    <a class="nav-link text-white" href="#" title="Batteries"><li class="nav-item mt-2 ml-1 dropbtn">Batteries</li></a>
                                         <div class="dropdown-content instru">
-                                            <a href="#" data-filter=".Batteries">Batteries</a>
+                                            <a href="#" data-filter=".Batteries, .Cymbales, .Baguettes, .Percussions">Voir tout</a>
                                             <a href="#" data-filter=".Batteries.Acoustiques">Batteries Acoustiques</a>
                                             <a href="#" data-filter=".Batteries.Electroniques">Batteries Electroniques</a>
                                             <a href="#" data-filter=".Cymbales">Cymbales</a>
@@ -122,7 +121,17 @@
                                             <a href="#" data-filter=".Percussions">Percussions</a>
                                         </div>
                                 </div>
-                                <a class="nav-link text-white" href="" title="Claviers"><li class="nav-item ml-2 mt-2">Claviers</li></a>
+                                <div class="dropdown">
+                                    <a class="nav-link text-white" href="#" title="Claviers"><li class="nav-item mt-2 ml-1 dropbtn">Claviers</li></a>
+                                        <div class="dropdown-content instru">
+                                            <a href="#" data-filter=".Claviers, .Synthétiseurs, .Pianos">Voir tout</a>
+                                            <a href="#" data-filter=".Claviers.Arrangeurs">Claviers Arrangeurs</a>
+                                            <a href="#" data-filter=".Synthétiseurs">Synthétiseurs</a>
+                                            <a href="#" data-filter=".Claviers.Maîtres">Claviers Maîtres</a>
+                                            <a href="#" data-filter=".Pianos.de.Scènes">Pianos de Scènes</a>
+                                            <a href="#" data-filter=".Pianos.à.Queue">Pianos à Queues</a>
+                                        </div>
+                                </div>
                                 <a class="nav-link text-white" href="" title="Studio"><li class="nav-item ml-2 mt-2">Studio</li></a>
                                 <a class="nav-link text-white" href="" title="Sono"><li class="nav-item ml-2 mt-2">Sono</li></a>
                                 <a class="nav-link text-white" href="" title="Eclairage"><li class="nav-item ml-2 mt-2">Eclairage</li></a>   
