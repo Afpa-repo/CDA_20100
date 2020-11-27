@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Client
@@ -50,6 +51,11 @@ class Client
      * @ORM\Column(name="cli_password", type="string", length=250, nullable=false)
      */
     private $cliPassword;
+
+    /**
+    * @Assert\EqualTo(propertyPath="cli_password", message="Vos mots de passe sont différents")
+    */
+    public $cliConfPassword;
 
     /**
      * @var string|null

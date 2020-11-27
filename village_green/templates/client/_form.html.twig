@@ -1,0 +1,116 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div class="col-12">
+
+    <div class="col-12 ml-3">  
+        <div class="form-group row">
+            <div class="col-2 pl-0">
+            {{ form_label(form.cliEmail, 'Votre e-mail') }}
+            </div>
+            <div class="col-4 pl-0">
+            {{ form_widget(form.cliEmail) }}
+            </div>
+        </div>      
+    </div>
+
+    <div class="col-12 mr-3 ml-3">  
+        <div class="form-group row">
+            <div class="col-2 pl-0">
+            {{ form_label(form.cliPassword, 'Créer votre mot de passe') }}
+            </div>
+            <div class="col-4 pl-0">
+            {{ form_widget(form.cliPassword) }}
+            </div>
+            <div class="col-2">
+            {{ form_label(form.cliConfPassword, 'Confirmez votre mot de passe') }}
+            </div>
+            <div class="col-4">
+            {{ form_widget(form.cliConfPassword) }}
+            </div>
+        </div>      
+    </div>
+        
+</div>        
+
+    <div class="col-12 mb-5" id="titre">
+            <h2>Créez vos identifiants</h2>
+        </div>
+
+
+<div class="col-12 ml-3 pr-0">
+        <div class="form-group row">
+            <div class="col-6 pt-3 ">
+                <div class="row">
+                            <div class="col-4 pl-0">
+                                    <label for="prenom" class="col-auto col-form-label col-form-label-sm">Prénom</label>
+                            </div>
+                            <div class="col-6 pl-0">
+                                    <input type="text" class="form-control form-control-sm" id="prenom" >
+                            </div>
+                </div> 
+                <div class="row mt-2">           
+                            <div class="col-4 pl-0">
+                                    <label for="prenom" class="col-auto col-form-label col-form-label-sm">Nom</label>
+                            </div>
+                            <div class="col-6 pl-0">
+                                    <input type="text" class="form-control form-control-sm" id="prenom" >
+                            </div>
+                </div>
+                <div class="row mt-2">            
+                            <div class="col-4 pl-0">
+                                    <label for="prenom" class="col-auto col-form-label col-form-label-sm">Adresse</label>
+                            </div>
+                            <div class="col-6 pl-0">
+                                    <input type="text" class="form-control form-control-sm" id="prenom" >
+                            </div>
+                </div>
+                <div class="row mt-2">            
+                            <div class="col-4 pl-0">
+                                    <label for="prenom" class="col-auto col-form-label col-form-label-sm">Complément d'adresse</label>
+                            </div>
+                            <div class="col-6 pl-0">
+                                    <input type="text" class="form-control form-control-sm" id="prenom" >
+                            </div>
+                </div>
+                <div class="row mt-2">            
+                        <div class="col-4 pl-0">
+                                <label for="prenom" class="col-auto col-form-label col-form-label-sm">Code postal</label>
+                        </div>
+                        <div class="col-6 pl-0">
+                                <input type="text" class="form-control form-control-sm" id="prenom" >
+                        </div>
+            </div> <div class="row mt-2">            
+                    <div class="col-4 pl-0">
+                            <label for="prenom" class="col-auto col-form-label col-form-label-sm">Ville</label>
+                    </div>
+                    <div class="col-6 pl-0">
+                            <input type="text" class="form-control form-control-sm" id="prenom" >
+                    </div>
+        </div> <div class="row mt-2">            
+                <div class="col-4 pl-0">
+                        <label for="prenom" class="col-auto col-form-label col-form-label-sm">Pays</label>
+                </div>
+                <div class="col-6 pl-0">
+                        <input type="text" class="form-control form-control-sm" id="prenom" >
+                </div>
+    </div>
+
+
+
+            </div>
+<div class="col-6"id="cadrenumero"></div>
+
+
+</div>
+
+
+
+<div class="row mb-5 mt-5"id="btnenvoie">
+
+        <input type="image" src="BODY/ESPACE CLIENT/bouton_valider.png" >
+</div>
+
+</div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
