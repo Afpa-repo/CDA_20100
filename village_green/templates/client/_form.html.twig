@@ -29,5 +29,48 @@
         </div>
 </div>
 
+<div class="col-12 mb-5" id="titre">
+    <h2>Créez vos identifiants</h2>
+</div>
+
+<div class="col-12 ml-3 pr-0">
+    <div class="form-group row">
+        <div class="col-6 pt-3 ">
+            <div class="row">
+                <div class="col-4 pl-0">
+                    {{ form_label(form.cliNom, 'Votre nom') }}
+                </div>
+                <div class="col-6 pl-0">
+                    {{ form_widget(form.cliNom) }}
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 pl-0">
+                    {{ form_label(form.cliPrenom, 'Votre prénom') }}
+                </div>
+                <div class="col-6 pl-0">
+                    {{ form_widget(form.cliPrenom) }}
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 pl-0">
+                    {{ form_label(form.cliAdresse, 'Adresse') }}
+                </div>
+                <div class="col-6 pl-0">
+                    {{ form_widget(form.cliAdresse) }}
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 pl-0">
+                    {{ form_label(form.cliCp, 'Code postal') }}
+                </div>
+                <div class="col-6 pl-0">
+                    {{ form_widget(form.cliCp) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
