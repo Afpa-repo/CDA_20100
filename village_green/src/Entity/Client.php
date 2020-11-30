@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Client
@@ -13,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="client", indexes={@ORM\Index(name="cli_com_id", columns={"cli_com_id"})})
  * @ORM\Entity
  */
-class Client
+class Client implements UserInterface
 {
     /**
      * @var int
@@ -288,4 +289,24 @@ class Client
         return $this;
     }
 
+    // Méthode qui retourne un tableau des roles des différents utilisateurs
+    public function getRoles()
+    {}
+
+    // Méthode utilisée pour certaines méthodes de chiffrement
+    public function getSalt()
+    {}
+
+    // Méthode qui retourne l'identifiant utilisé pour l'authentification
+    public function getUsername()
+    {}
+
+    // Méthode qui permet d'effacer des informations sensibles (mot de passe par exemple) qui aurait pu être stocké dans l'entité.
+    public function eraseCredentials()
+    {}
+
+    public function getPassword()
+    {
+        // TODO: Implement getPassword() method.
+    }
 }

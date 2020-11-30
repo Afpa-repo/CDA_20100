@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class ClientType extends AbstractType
@@ -17,7 +18,7 @@ class ClientType extends AbstractType
     {
         $builder
             ->add('cliNom', TextType::class, [
-                'label' => 'Votre Nom',
+                'label' => 'Nom',
                 'label_attr' => [
                     'class' => 'col-auto col-form-label col-form-label-sm',
                 ],
@@ -27,6 +28,7 @@ class ClientType extends AbstractType
                     'class' => 'form-control form-control-sm',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                             'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
@@ -34,7 +36,7 @@ class ClientType extends AbstractType
                 ]
             ])
             ->add('cliPrenom', TextType::class, [
-                'label' => 'Votre Prénom',
+                'label' => 'Prénom',
                 'label_attr' => [
                     'class' => 'col-auto col-form-label col-form-label-sm',
                 ],
@@ -44,6 +46,7 @@ class ClientType extends AbstractType
                     'class' => 'form-control form-control-sm',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                             'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
@@ -51,7 +54,7 @@ class ClientType extends AbstractType
                 ]
             ])
             ->add('cliEmail', EmailType::class, [
-                'label' => 'Votre e-mail',
+                'label' => 'E-mail',
                 'label_attr' => [
                     'class' => 'col-auto col-form-label col-form-label-sm',
                 ],
@@ -61,14 +64,15 @@ class ClientType extends AbstractType
                     'class' => 'form-control form-control-sm',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                        'pattern' => '/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/',
+                        'pattern' => '/^[\w\-.]+@([\w\-]+.)+[\w\-]{2,4}$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]
             ])
             ->add('cliPassword', PasswordType::class, [
-                'label' => 'Votre mot de passe',
+                'label' => 'Mot de passe',
                 'label_attr' => [
                     'class' => 'col-auto col-form-label col-form-label-sm',
                 ],
@@ -78,14 +82,15 @@ class ClientType extends AbstractType
                     'class' => 'form-control form-control-sm',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                        'pattern' => '/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/',
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\w).{8,}$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]
             ])
             ->add('cliConfPassword', PasswordType::class, [
-                'label' => 'Confirmez votre mot de passe',
+                'label' => 'Confirmation du mot de passe',
                 'label_attr' => [
                     'class' => 'col-auto col-form-label col-form-label-sm',
                 ],
@@ -95,10 +100,7 @@ class ClientType extends AbstractType
                     'class' => 'form-control form-control-sm',
                 ],
                 'constraints' => [
-                    new Regex([
-                        'pattern' => '/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/',
-                        'message' => 'Caratère(s) non valide(s)'
-                    ]),
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                 ]
             ])
             ->add('cliAdresse', TextType::class, [
@@ -112,8 +114,9 @@ class ClientType extends AbstractType
                     'class' => 'form-control form-control-sm',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                        'pattern' => '/^([0-9a-zA-Z\'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,50})$/',
+                        'pattern' => '/^([0-9a-zA-Z\'àâéèêôùûçÀÂÉÈÔÙÛÇ\s\-]{1,50})$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]
@@ -125,17 +128,35 @@ class ClientType extends AbstractType
                 ],
                 'help' => 'Indiquez ici votre code postal',
                 'attr' => [
-                    'placeholder' => 'Ex : 80090',
+                    'placeholder' => 'Ex : 75000',
                     'class' => 'form-control form-control-sm',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[0-9]{5}$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]
             ])
-            ->add('cliVille')
+            ->add('cliVille', TextType::class, [
+                'label' => 'Ville',
+                'label_attr' => [
+                    'class' => 'col-auto col-form-label col-form-label-sm',
+                ],
+                'help' => 'Indiquez ici votre ville',
+                'attr' => [
+                    'placeholder' => 'Ex : PARIS',
+                    'class' => 'form-control form-control-sm',
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
+                    new Regex([
+                            'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
+                        'message' => 'Caratère(s) non valide(s)'
+                    ]),
+                ]
+            ])
             //->add('cliRegl')
             //->add('cliCateg')
             //->add('cliCoeff')
