@@ -208,3 +208,15 @@ h2
     object-fit: contain;
     margin-bottom: 40px;
 }
+
+/** CLIENT/FORM.HTML **/
+
+#commandes_sms
+{
+    width: 50%;
+}
+
+#cli_password, #cli_conf_password
+{
+    margin-top: -8px;
+}

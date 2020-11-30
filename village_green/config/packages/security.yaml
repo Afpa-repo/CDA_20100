@@ -22,3 +22,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+    # Pour l'encodage du mot de passe
+    encoders:
+        App\Entity\Client: bcrypt

@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,6 +29,7 @@ class ProduitType extends AbstractType
                     'placeholder' => 'Produit',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[A-Za-z0-9éèàçâêûîôäëüïö\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
@@ -41,6 +43,7 @@ class ProduitType extends AbstractType
                     'placeholder' => 'Description du produit',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
@@ -54,6 +57,7 @@ class ProduitType extends AbstractType
                     'placeholder' => 'Prix unitaire',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[0-9.]+$/',
                         'message' => 'Caratère(s) non valide(s)'
@@ -87,6 +91,7 @@ class ProduitType extends AbstractType
                     'placeholder' => 'Quantités en stock',
                 ],
                 'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[0-9]+$/',
                         'message' => 'Caratère(s) non valide(s)'
@@ -102,6 +107,9 @@ class ProduitType extends AbstractType
                 'label' => 'Nom de la sous-rubrique',
                 'help' => 'Sélectionner la sous-rubrique du produit',
                 'placeholder' => 'Choisir la sous-rubrique',
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
+                ]
             ])
         ;
     }

@@ -28,7 +28,6 @@ class Produit
      * @var string|null
      *
      * @ORM\Column(name="pro_lib", type="string", length=50, nullable=true)
-     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $proLib;
 
@@ -36,7 +35,6 @@ class Produit
      * @var string|null
      *
      * @ORM\Column(name="pro_descr", type="string", length=250, nullable=true)
-     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $proDescr;
 
@@ -44,7 +42,6 @@ class Produit
      * @var string|null
      *
      * @ORM\Column(name="pro_prix_achat", type="decimal", precision=10, scale=2, nullable=true)
-     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $proPrixAchat;
 
@@ -60,7 +57,6 @@ class Produit
      * @var int|null
      *
      * @ORM\Column(name="pro_stock", type="integer", nullable=true)
-     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $proStock;
 
@@ -78,7 +74,6 @@ class Produit
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="pro_s_rub_id", referencedColumnName="s_rub_id")
      * })
-     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $proSRub;
 
