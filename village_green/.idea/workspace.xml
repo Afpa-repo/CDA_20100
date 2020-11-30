@@ -87,7 +87,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/vendor/psr/cache" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -142,6 +141,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kh2z9EJOkLbgHXNnsw2sW86TIH" />
@@ -180,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606146557970</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit files">
+      <created>1606725342980</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606725342980</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,7 +207,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mise en forme index Produits ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mise en forme index Produits ok" />
+    <MESSAGE value="Commit files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit files" />
   </component>
   <component name="WindowStateProjectService">
     <state x="656" y="204" key="FileChooserDialogImpl" timestamp="1606139164522">
@@ -211,10 +219,11 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="301" y="79" key="SettingsEditor/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606139275425" />
-    <state x="236" y="154" key="Vcs.Push.Dialog.v2" timestamp="1606146567493">
-      <screen x="0" y="0" width="1600" height="870" />
+    <state x="1883" y="-249" key="Vcs.Push.Dialog.v2" timestamp="1606725493943">
+      <screen x="1600" y="-435" width="1920" height="1050" />
     </state>
     <state x="236" y="154" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606146567493" />
+    <state x="1883" y="-249" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-435.1920.1050@1600.-435.1920.1050" timestamp="1606725493943" />
     <state x="571" y="308" width="621" height="393" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1606139274134">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
