@@ -1,4 +1,5 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+        <button id="btn_ajouter" class="btn btn-success">{{ button_label|default('Ajouter') }}</button>
+        <a type="button" class="btn btn-secondary" id="btn_retour" href="{{ path('produit_index') }}">Retour</a>
 {{ form_end(form) }}
