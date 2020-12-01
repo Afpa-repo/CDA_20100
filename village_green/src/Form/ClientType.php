@@ -73,7 +73,6 @@ class ClientType extends AbstractType
             ])
             ->add('cliPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
-                'empty_data' => '',
                 'label_attr' => [
                     'class' => 'col-auto col-form-label col-form-label-sm',
                 ],

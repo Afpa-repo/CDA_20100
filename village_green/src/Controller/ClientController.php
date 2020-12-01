@@ -89,13 +89,14 @@ class ClientController extends AbstractController
     public function edit(Request $request, Client $client): Response
     {
         $form = $this->createForm(ClientType::class, $client);
+        $form->remove('cliPassword');
+        $form->remove('cliConfPassword');
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if(!isset($form['cliPassword']) && !isset($form['cliConfPassword']))
+            if($form->get('cliPassword')->getData() === null)
             {
-                $recup_password = $client->getCliPassword();
-                $client->setCliPassword($recup_password);
+                $client->setCliPassword($client->getCliPassword());
             }
             $this->getDoctrine()->getManager()->flush();
 
