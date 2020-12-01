@@ -55,7 +55,7 @@ class ClientController extends AbstractController
                 'Votre inscription est validée !!'
             );
 
-            // Et nous redirigeons vers la liste des produits
+            // Et nous redirigeons vers la page d'accueil
             return $this->redirectToRoute('home');
         }
 
@@ -84,6 +84,13 @@ class ClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            if(empty($form->get('cliPassword')->getData()))
+            {
+                $recup_password = $client->getCliPassword();
+                $client->setCliPassword($recup_password);
+            }
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('client_index');
@@ -106,6 +113,12 @@ class ClientController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('client_index');
+        // Message de succès de suppression du compte
+        $this->addFlash(
+            'success',
+            'Compte supprimé avec succès !!'
+        );
+
+        return $this->redirectToRoute('home');
     }
 }

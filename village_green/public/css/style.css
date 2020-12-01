@@ -220,3 +220,59 @@ h2
 {
     margin-top: -8px;
 }
+
+/** CLIENT/EDIT.HTML **/
+
+#btn_supprimer_client
+{
+    margin-top: -10px;
+    margin-bottom: 20px;
+    margin-left: 415px;
+}
+
+#btn_retour5
+{
+    margin-top: -150px;
+    margin-left: 10px;
+}
+
+/** CLIENT/INDEX.HTML **/
+
+#bouton_create
+{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/** CLIENT/SHOW.HTML **/
+
+#btn_retour3
+{
+    margin-bottom: 20px;
+}
+
+#btn_modification2
+{
+    margin-bottom: 20px;
+}
+
+#btn_suppr
+{
+    margin-top: -48px;
+    margin-left: -201px;
+}
+
+#fiche_client
+{
+    margin-top: -40px;
+    padding-bottom: 40px;
+}
+
+/** CLIENT/NEW.HTML **/
+
+#btn_retour4
+{
+    margin-top: -150px;
+    margin-left: 10px;
+}

@@ -3,42 +3,45 @@
 {% block title %}Client index{% endblock %}
 
 {% block body %}
-    <h1>Client index</h1>
 
-    <table class="table">
+<h1 class="text-center mb-5">Liste des clients</h1>
+
+<div class="container">
+
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>CliId</th>
-                <th>CliNom</th>
-                <th>CliPrenom</th>
-                <th>CliEmail</th>
-                <th>CliPassword</th>
-                <th>CliAdresse</th>
-                <th>CliCp</th>
-                <th>CliVille</th>
-                <th>CliRegl</th>
-                <th>CliCateg</th>
-                <th>CliCoeff</th>
-                <th>actions</th>
+            <tr class="text-center">
+                <!--<th>CliId</th>-->
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <!--<th>CliPassword</th>-->
+                <th>Adresse</th>
+                <th>CP</th>
+                <th>Ville</th>
+                <th>Règlement</th>
+                <th>Catégorie</th>
+                <!--<th>Coefficient</th>-->
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for client in clients %}
-            <tr>
-                <td>{{ client.cliId }}</td>
+            <tr class="text-center">
+                {#<td>{{ client.cliId }}</td>#}
                 <td>{{ client.cliNom }}</td>
                 <td>{{ client.cliPrenom }}</td>
                 <td>{{ client.cliEmail }}</td>
-                <td>{{ client.cliPassword }}</td>
+                {#<td>{{ client.cliPassword }}</td>#}
                 <td>{{ client.cliAdresse }}</td>
                 <td>{{ client.cliCp }}</td>
                 <td>{{ client.cliVille }}</td>
                 <td>{{ client.cliRegl }}</td>
                 <td>{{ client.cliCateg }}</td>
-                <td>{{ client.cliCoeff }}</td>
+                {#<td>{{ client.cliCoeff }}</td>#}
                 <td>
-                    <a href="{{ path('client_show', {'cliId': client.cliId}) }}">show</a>
-                    <a href="{{ path('client_edit', {'cliId': client.cliId}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('client_show', {'cliId': client.cliId}) }}">VOIR</a>
+                    <a class="btn btn-secondary" href="{{ path('client_edit', {'cliId': client.cliId}) }}">MODIFIER</a>
                 </td>
             </tr>
         {% else %}
@@ -49,5 +52,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('client_new') }}">Create new</a>
+</div>
+
+<a id="bouton_create" class="btn btn-success" href="{{ path('client_new') }}">AJOUTER UN NOUVEAU CLIENT</a>
+
 {% endblock %}
