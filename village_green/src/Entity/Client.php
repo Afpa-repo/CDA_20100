@@ -118,6 +118,11 @@ class Client implements UserInterface
     private $passeCmd;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -291,15 +296,25 @@ class Client implements UserInterface
 
     // Méthode qui retourne un tableau des roles des différents utilisateurs
     public function getRoles()
-    {}
+    {
+        if ($this->role == "administrateur")
+            return ["ROLE_ADMIN"];
+        if ($this->role == "utilisateur")
+            return ["ROLE_USER"];
+        return [];
+    }
 
     // Méthode utilisée pour certaines méthodes de chiffrement
     public function getSalt()
-    {}
+    {
+        return "";
+    }
 
     // Méthode qui retourne l'identifiant utilisé pour l'authentification
     public function getUsername()
-    {}
+    {
+        return $this->getCliEmail();
+    }
 
     // Méthode qui permet d'effacer des informations sensibles (mot de passe par exemple) qui aurait pu être stocké dans l'entité.
     public function eraseCredentials()
@@ -307,6 +322,18 @@ class Client implements UserInterface
 
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->getCliPassword();
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
     }
 }
