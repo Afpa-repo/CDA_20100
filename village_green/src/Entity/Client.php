@@ -120,7 +120,7 @@ class Client implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $role;
+    private $cliRole;
 
     /**
      * Constructor
@@ -297,9 +297,9 @@ class Client implements UserInterface
     // Méthode qui retourne un tableau des roles des différents utilisateurs
     public function getRoles()
     {
-        if ($this->role == "administrateur")
+        if ($this->cliRole == "administrateur")
             return ["ROLE_ADMIN"];
-        if ($this->role == "utilisateur")
+        if ($this->cliRole == "utilisateur")
             return ["ROLE_USER"];
         return [];
     }
@@ -325,14 +325,14 @@ class Client implements UserInterface
         return $this->getCliPassword();
     }
 
-    public function getRole(): ?string
+    public function getCliRole(): ?string
     {
-        return $this->role;
+        return $this->cliRole;
     }
 
-    public function setRole(string $role): self
+    public function setCliRole(string $cliRole): self
     {
-        $this->role = $role;
+        $this->cliRole = $cliRole;
 
         return $this;
     }

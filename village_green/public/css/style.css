@@ -134,6 +134,12 @@ h2
     margin: 0 auto;
 }
 
+#bouton_deconnexion
+{
+    float :right;
+    margin-top: -7px;
+}
+
 /*********************************************************** HOME/INDEX.HTML ********************************************************/
 
 #corps_index {
