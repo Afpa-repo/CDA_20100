@@ -20,6 +20,9 @@
                 </div>
             </div>
         </div>
+                    {{ form_widget(form.cliPassword, {'value': recup, 'type': 'hidden'}) }}
+                    {{ form_widget(form.cliConfPassword, {'value': recup, 'type': 'hidden'}) }}
+    </div>
     <div class="col-12 mt-5 mb-5" id="titre">
         <h2>Vos identifiants</h2>
     </div>

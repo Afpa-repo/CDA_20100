@@ -84,28 +84,29 @@ class ClientController extends AbstractController
      * @Route("/{cliId}/edit", name="client_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Client $client
+     * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      */
-    public function edit(Request $request, Client $client): Response
+    public function edit(Request $request, Client $client, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $form = $this->createForm(ClientType::class, $client);
-        $form->remove('cliPassword');
-        $form->remove('cliConfPassword');
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if($form->get('cliPassword')->getData() === null)
-            {
-                $client->setCliPassword($client->getCliPassword());
-            }
-            $this->getDoctrine()->getManager()->flush();
+        $recup_password = $client->getCliPassword();
 
-            return $this->redirectToRoute('client_index');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                'success',
+                'Modification du profil validée'
+            );
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('client/edit.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
+            'recup' => $recup_password,
         ]);
     }
 
