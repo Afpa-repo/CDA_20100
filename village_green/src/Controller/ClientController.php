@@ -39,6 +39,7 @@ class ClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $client->setCliRole('utilisateur');
             $client->setCliPassword(
                 $passwordEncoder->encodePassword(
                     $client,
@@ -83,6 +84,8 @@ class ClientController extends AbstractController
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
+        $recup_password = $client->getCliPassword();
+
         if ($form->isSubmitted() && $form->isValid()) {
             
             if(empty($form->get('cliPassword')->getData()))
@@ -93,12 +96,18 @@ class ClientController extends AbstractController
             
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('client_index');
+            $this->addFlash(
+                'success',
+                'Modification du profil validée'
+            );
+
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('client/edit.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
+            'recup' => $recup_password,
         ]);
     }
 

@@ -17,13 +17,16 @@
             <div class="col-2 pl-0">
             {{ form_label(form.cliEmail, 'Votre e-mail :') }}
             </div>
-            <div class="col-9 pl-0">
+            <div class="col-10 pl-0">
             {{ form_widget(form.cliEmail) }}
             {{ form_help(form.cliEmail) }}
             </div>
         </div>      
     </div>
         
+        {{ form_widget(form.cliPassword, {'value': recup, 'type': 'hidden'}) }}
+        {{ form_widget(form.cliConfPassword, {'value': recup, 'type': 'hidden'}) }}
+
 </div>        
 
 <div class="col-12 mt-5 mb-5" id="titre">
@@ -95,8 +98,10 @@
         </div>
 </div>
 
-{{ include('client/_delete_form.html.twig') }}
-
 {{ form_end(form) }}
+
+<div id="btn_supprimer_client" class="container">
+{{ include('client/_delete_form.html.twig') }}
+</div>
 
 {% endblock %}

@@ -141,6 +141,12 @@ h2
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
+#bouton_deconnexion 
+{
+    float: right;
+    margin-top: -7px;
+}
+
 /** HOME/INDEX.HTML **/
 
 #corps_index 
@@ -227,7 +233,7 @@ h2
 {
     margin-top: -10px;
     margin-bottom: 20px;
-    margin-left: 415px;
+    margin-left: 422px;
 }
 
 #btn_retour5
@@ -259,8 +265,9 @@ h2
 
 #btn_suppr
 {
-    margin-top: -48px;
-    margin-left: -201px;
+    margin-top: -60px;
+    margin-bottom: 20px;
+    margin-right: -30px;
 }
 
 #fiche_client

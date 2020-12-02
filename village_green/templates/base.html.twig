@@ -41,9 +41,15 @@
                         
                         <ul class="navbar-nav">
                             <a class="nav-link text-dark" href="" title="Infos"><li class="nav-item">Infos</li></a>
-                            <a class="nav-link text-dark" href="" title="Espace client"><li class="nav-item">Espace client</li></a>
-                            <a class="nav-link text-dark" href="" title="Panier"><li class="nav-item mr-5"><img src="{{asset('img/HEADER/picto_panier.png')}}" alt="panier"></li></a>
-                            <a class="nav-link text-dark" href="" title="Pays"><li class="nav-item ml-5"><img src="{{asset('img/HEADER/picto_pays.png')}}" alt="pays"></li></a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="clientDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Client</a>
+                                    <div class="dropdown-menu" aria-labelledby="clientDropdown">
+                                        <a class="dropdown-item" href="{{ path('client_new') }}">Inscription</a>
+                                        <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+                                    </div>
+                            </li>
+                            <a class="nav-link text-dark" href="" title="Panier"><li class="nav-item mr-5"><img src="{{ asset('img/HEADER/picto_panier.png')}}" alt="panier"></li></a>
+                            <a class="nav-link text-dark" href="" title="Pays"><li class="nav-item ml-5"><img src="{{ asset('img/HEADER/picto_pays.png')}}" alt="pays"></li></a>
                         </ul>
                         
                         </div>  
