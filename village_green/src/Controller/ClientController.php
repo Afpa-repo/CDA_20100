@@ -45,6 +45,9 @@ class ClientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $client->setCliRole('utilisateur');
+            $client->setCliRegl('A définir');
+            $client->setCliCateg('A définir');
+            $client->setCliCoeff('1');
             $client->setCliPassword(
                 $passwordEncoder->encodePassword(
                     $client,
