@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1435f11f-2388-4536-965f-4fe1b2f066ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/_form.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="d2c9dc96-b86e-4828-bf53-1ec80f65d97d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -221,24 +217,5 @@
     <MESSAGE value="Commit files" />
     <MESSAGE value="Merge sur dev" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge sur dev" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="656" y="204" key="FileChooserDialogImpl" timestamp="1606139164522">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="656" y="204" key="FileChooserDialogImpl/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606139164522" />
-    <state x="301" y="79" key="SettingsEditor" timestamp="1606139275425">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="301" y="79" key="SettingsEditor/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606139275425" />
-    <state x="1883" y="-249" key="Vcs.Push.Dialog.v2" timestamp="1606725756366">
-      <screen x="1600" y="-435" width="1920" height="1050" />
-    </state>
-    <state x="236" y="154" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606146567493" />
-    <state x="1883" y="-249" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-435.1920.1050@1600.-435.1920.1050" timestamp="1606725756366" />
-    <state x="571" y="308" width="621" height="393" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1606139274134">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="571" y="308" width="621" height="393" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1600.870/1600.-435.1920.1050@0.0.1600.870" timestamp="1606139274134" />
   </component>
 </project>
