@@ -39,6 +39,9 @@ class ClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $client->setCliRegl('A définir');
+            $client->setCliCateg('A définir');
+            $client->setCliCoeff('1');
             $client->setCliRole('utilisateur');
             $client->setCliPassword(
                 $passwordEncoder->encodePassword(
@@ -125,7 +128,7 @@ class ClientController extends AbstractController
         // Message de succès de suppression du compte
         $this->addFlash(
             'success',
-            'Compte supprimé avec succès !!'
+            'Profil supprimé avec succès !!'
         );
 
         return $this->redirectToRoute('home');
