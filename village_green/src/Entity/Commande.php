@@ -147,6 +147,10 @@ class Commande
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->getCmdCliAdresseLiv().'[br]'.$this->getCmdCliCpLiv().', '.$this->getCmdCliVilleLiv();
+    }
 
     public function getCmdReduc(): ?string
     {
