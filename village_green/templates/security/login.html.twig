@@ -17,14 +17,17 @@
                         </div>
                     {% endif %}#}
                     <label for="email">Adresse Mail</label>
-                    <input type="text" id="email" name="_username" class="form-control mb-4" value="{{ last_username }}">
+                        <input type="text" id="email" name="_username" class="form-control mb-4" value="{{ last_username }}">
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" id="mdp" name="_password" class="form-control mb-4">
-                    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
-                    <a type="button" class="btn btn-danger mb-3" href="{{path('logout')}}">SE DECONNECTER</a>
-                    {% else %}
-                    <input type="submit" class="btn btn-primary mb-3" value="SE CONNECTER">
-                    {% endif %}
+                        <input type="password" id="mdp" name="_password" class="form-control mb-2">
+                    <div id="mdp_oublie">
+                        <a href="#"><b>Mot de passe oublié ?</b></a>
+                    </div>
+                        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+                        <a type="button" class="btn btn-danger mb-3" href="{{path('logout')}}">SE DECONNECTER</a>
+                        {% else %}
+                        <input type="submit" class="btn btn-primary mb-3" value="SE CONNECTER">
+                        {% endif %}
                 </form>
             </div>
         </div>

@@ -8,8 +8,6 @@
 
 <h1 class="text-center mb-5">Votre profil</h1>
 
-<a class="btn btn-secondary" id="btn_retour5" href="{{ path('client_show', {'cliId': client.cliId}) }}">RETOUR</a>
-
 <div class="col-12">
 
     <div class="col-12">  
@@ -23,9 +21,6 @@
             </div>
         </div>      
     </div>
-        
-        {{ form_widget(form.cliPassword, {'value': recup, 'type': 'hidden'}) }}
-        {{ form_widget(form.cliConfPassword, {'value': recup, 'type': 'hidden'}) }}
 
 </div>        
 
@@ -85,13 +80,15 @@
                                         {{ form_help(form.cliVille) }}
                                 </div>
                         </div>
-
+                        
                         <div class="col-12 mt-5 pl-0 text-right">
+                                <a class="btn btn-secondary" href="{{ path('client_show', {'cliId': client.cliId}) }}">RETOUR</a>
                                 <button class="btn btn-success">{{ button_label|default('SAUVEGARDER') }}</button>
                         </div>
                         
                 </div>
-
+                
+                
                 <div class="col-6 mt-4 text-center">
                         <img id="commandes_sms" src=" {{ asset('img/BODY/ESPACE CLIENT/cadre_numero.png') }}" alt="Commandes SMS">
                 </div>
@@ -100,7 +97,7 @@
 
 {{ form_end(form) }}
 
-<div id="btn_supprimer_client" class="container">
+<div id="btn_supprimer_client" class="container col-lg-2 text-right">
 {{ include('client/_delete_form.html.twig') }}
 </div>
 

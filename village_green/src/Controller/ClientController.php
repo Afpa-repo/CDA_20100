@@ -85,17 +85,11 @@ class ClientController extends AbstractController
     public function edit(Request $request, Client $client): Response
     {
         $form = $this->createForm(ClientType::class, $client);
+        $form->remove('cliPassword');
+        $form->remove('cliConfPassword');
         $form->handleRequest($request);
 
-        $recup_password = $client->getCliPassword();
-
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            if(empty($form->get('cliPassword')->getData()))
-            {
-                $recup_password = $client->getCliPassword();
-                $client->setCliPassword($recup_password);
-            }
             
             $this->getDoctrine()->getManager()->flush();
 
@@ -110,7 +104,6 @@ class ClientController extends AbstractController
         return $this->render('client/edit.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
-            'recup' => $recup_password,
         ]);
     }
 
@@ -121,6 +114,7 @@ class ClientController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$client->getCliId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            session_destroy();
             $entityManager->remove($client);
             $entityManager->flush();
         }
