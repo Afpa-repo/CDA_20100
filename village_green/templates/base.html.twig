@@ -44,10 +44,11 @@
                                             <div class="dropdown-menu" aria-labelledby="clientDropdown">
 
                                                 {% if app.user %}
+                                                    <a class="dropdown-item" href="{{ path('client_show', {'cliId': app.user.cliId}) }}">Voir profil</a>
                                                     <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
                                                 {% else %}
-                                                        <a class="dropdown-item" href="{{ path('client_new') }}">Inscription</a>
-                                                        <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+                                                    <a class="dropdown-item" href="{{ path('client_new') }}">Inscription</a>
+                                                    <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
                                                 {% endif %}
                                             </div>
                                         </li>
