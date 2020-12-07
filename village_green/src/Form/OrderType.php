@@ -13,17 +13,16 @@ class OrderType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        dd($options);
+        $user=$options['user'];
         $builder
             ->add('adresse', EntityType::class, [
                 'label'=>'Veillez comfirmer votre adress de livraison',
                 'required'=>true,
                 'class'=>Commande::class,
+                'choices'=>$user,
                 'multiple'=>false,
                 'expanded'=>true
-            ])
-
-            ->add('adresse1', ChoiceType::class, [
-                'data_class'=>Commande::class
             ])
         ;
     }
@@ -31,7 +30,7 @@ class OrderType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'user'=>array()
         ]);
     }
 }
