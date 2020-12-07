@@ -24,6 +24,8 @@
                     <a type="button" class="btn btn-danger mt-3" href="{{ path('logout') }}">Se déconnecter</a>
                     {% else %}
                     <input type="submit" class="btn btn-primary mt-3 mb-3" value="Se connecter">
+                        <hr>
+                        <p class="text-center">Ou souhaitez-vous<a href="{{ path('client_new') }}">créer votre compte ?</a></p>
                     {% endif %}
                 </form>
             </div>
