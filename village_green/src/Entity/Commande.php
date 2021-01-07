@@ -101,6 +101,13 @@ class Commande
     private $cmdCliCoeff;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="cmd_payer", type="boolean", nullable=false)
+     */
+    private $cmdPayer;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Client", inversedBy="passeCmd")
@@ -146,10 +153,6 @@ class Commande
         $this->cmdDate = $cmdDate;
 
         return $this;
-    }
-    public function __toString()
-    {
-        return $this->getCmdCliAdresseLiv().'[br]'.$this->getCmdCliCpLiv().', '.$this->getCmdCliVilleLiv();
     }
 
     public function getCmdReduc(): ?string
@@ -268,6 +271,18 @@ class Commande
     public function setCmdCliCoeff(?string $cmdCliCoeff): self
     {
         $this->cmdCliCoeff = $cmdCliCoeff;
+
+        return $this;
+    }
+
+    public function getCmdPayer(): ?bool
+    {
+        return $this->cmdPayer;
+    }
+
+    public function setCmdPayer(bool $cmdPayer): self
+    {
+        $this->cmdPayer = $cmdPayer;
 
         return $this;
     }
