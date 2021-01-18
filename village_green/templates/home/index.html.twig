@@ -4,6 +4,12 @@
 
 {% block body %}
 
+    {% if app.user %}
+        <div class="alert alert-success">
+            Vous êtes connecté(e) en tant que <b>{{ app.user.username }}</b> <a type="button" class="btn btn-danger" id="bouton_deconnexion" href="{{ path('logout') }}">Déconnexion</a>
+        </div>
+    {% endif %}
+
 <div class=" container p-0" id="corps_index">
     <div class="row ml-5 mr-4">
         <div class="col-9">

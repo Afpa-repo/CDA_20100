@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Client
@@ -12,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="client", indexes={@ORM\Index(name="cli_com_id", columns={"cli_com_id"})})
  * @ORM\Entity
  */
-class Client
+class Client implements UserInterface
 {
     /**
      * @var int
@@ -50,6 +52,11 @@ class Client
      * @ORM\Column(name="cli_password", type="string", length=250, nullable=false)
      */
     private $cliPassword;
+
+    /**
+     * @Assert\EqualTo(propertyPath="cli_password", message="Vos mots de passe sont différents")
+     */
+    public $cliConfPassword;
 
     /**
      * @var string|null
@@ -109,6 +116,11 @@ class Client
      * @ORM\ManyToMany(targetEntity="Commande", mappedBy="passeCli")
      */
     private $passeCmd;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cliRole;
 
     /**
      * Constructor
@@ -282,4 +294,46 @@ class Client
         return $this;
     }
 
+    // Méthode qui retourne un tableau des roles des différents utilisateurs
+    public function getRoles()
+    {
+        if ($this->cliRole == "administrateur")
+            return ["ROLE_ADMIN"];
+        if ($this->cliRole == "utilisateur")
+            return ["ROLE_USER"];
+        return [];
+    }
+
+    // Méthode utilisée pour certaines méthodes de chiffrement
+    public function getSalt()
+    {
+        return "";
+    }
+
+    // Méthode qui retourne l'identifiant utilisé pour l'authentification
+    public function getUsername()
+    {
+        return $this->getCliEmail();
+    }
+
+    // Méthode qui permet d'effacer des informations sensibles (mot de passe par exemple) qui aurait pu être stocké dans l'entité.
+    public function eraseCredentials()
+    {}
+
+    public function getPassword()
+    {
+        return $this->getCliPassword();
+    }
+
+    public function getCliRole(): ?string
+    {
+        return $this->cliRole;
+    }
+
+    public function setCliRole(string $cliRole): self
+    {
+        $this->cliRole = $cliRole;
+
+        return $this;
+    }
 }
