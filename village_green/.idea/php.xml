@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< .merge_file_a03944
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
@@ -112,5 +113,7 @@
       <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
+=======
+>>>>>>> .merge_file_a13392
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
 </project>
