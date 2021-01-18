@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< .merge_file_a05688
 <<<<<<< .merge_file_a03944
   <component name="PhpIncludePathManager">
     <include_path>
@@ -115,5 +116,7 @@
   </component>
 =======
 >>>>>>> .merge_file_a13392
+=======
+>>>>>>> .merge_file_a08272
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
 </project>
