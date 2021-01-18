@@ -20,45 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e78b6140-66fc-4f2e-b33e-b8ed6096472f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201207160442.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201208073819.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201228175730.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210115074726.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210117123752.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/CommandeCrudController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/CommandeCancelController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/StripController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ValiderCommandeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/DetailCommande.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Passe.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CommandeRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/DetailCommandeRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commande_cancel/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/commande_valider/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/order/add.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/village_green.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/village_green.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classe/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classe/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/LivreurCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/LivreurCrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdresseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdresseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Adresse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Adresse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Commande.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commande.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Livreur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Livreur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/OrderType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OrderType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client/adresse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/adresse.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client/ajout_adresse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/ajout_adresse.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +150,8 @@
       <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
       <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
       <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1khP2SSVDFbNOmyoqdsm5TKuWja" />
