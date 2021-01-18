@@ -123,11 +123,18 @@ class Client implements UserInterface
     private $cliRole;
 
     /**
+     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="adr_cli_id")
+     */
+    private $cli_adresses;
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->passeCmd = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cli_adresses = new ArrayCollection();
     }
 
     public function getCliId(): ?int
@@ -336,4 +343,35 @@ class Client implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Adresse[]
+     */
+    public function getCliAdresses(): Collection
+    {
+        return $this->cli_adresses;
+    }
+
+    public function addCliAdress(Adresse $cliAdress): self
+    {
+        if (!$this->cli_adresses->contains($cliAdress)) {
+            $this->cli_adresses[] = $cliAdress;
+            $cliAdress->setAdrCliId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCliAdress(Adresse $cliAdress): self
+    {
+        if ($this->cli_adresses->removeElement($cliAdress)) {
+            // set the owning side to null (unless already changed)
+            if ($cliAdress->getAdrCliId() === $this) {
+                $cliAdress->setAdrCliId(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

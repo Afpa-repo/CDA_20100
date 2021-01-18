@@ -39,7 +39,7 @@ class AdresseController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $adresse->setClient($this->getUser());
+            $adresse->setAdrCliId($this->getUser());
             $this->entityManager->persist($adresse);
             $this->entityManager->flush();
            return $this->redirectToRoute('adresse');

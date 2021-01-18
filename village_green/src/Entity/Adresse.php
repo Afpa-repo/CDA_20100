@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Adresse
  *
- * @ORM\Table(name="adresse", indexes={@ORM\Index(name="IDX_C35F0816C7440455", columns={"client"})})
+ * @ORM\Table(name="adresse", indexes={@ORM\Index(name="IDX_C35F0816C7440455", columns={"adr_cli_id"})})
  * @ORM\Entity
  */
 class Adresse
@@ -50,18 +50,20 @@ class Adresse
     private $adrCp;
 
     /**
-     * @var \Client
-     *
-     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="cli_adresses")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client", referencedColumnName="cli_id")
+     *   @ORM\JoinColumn(nullable=false, name="adr_cli_id", referencedColumnName="cli_id")
      * })
      */
-    private $client;
+    private $adr_cli_id;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __toString(){
+        return $this->getAdrNumRue().'[br]'.$this->getAdrCp().'[br]'.$this->getAdrVille().'-'.$this->getAdrPays();
     }
 
     public function getAdrNumRue(): ?string
@@ -112,14 +114,14 @@ class Adresse
         return $this;
     }
 
-    public function getClient(): ?Client
+    public function getAdrCliId(): ?Client
     {
-        return $this->client;
+        return $this->adr_cli_id;
     }
 
-    public function setClient(?Client $client): self
+    public function setAdrCliId(?Client $adr_cli_id): self
     {
-        $this->client = $client;
+        $this->adr_cli_id = $adr_cli_id;
 
         return $this;
     }

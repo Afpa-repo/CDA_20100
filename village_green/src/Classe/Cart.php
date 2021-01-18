@@ -54,7 +54,7 @@ class Cart
     public function getFull()
     {
         $cartComplete=[];
-        if ($this->get()) // Pour n'est pas faire le foreache lorsque le panier est panier est vide
+        if ($this->get()) // Pour n'est pas faire le foreache lorsque le panier est vide
         {
             foreach ($this->get() as $id=>$quantite)
             {

@@ -19,7 +19,47 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e78b6140-66fc-4f2e-b33e-b8ed6096472f" name="Default Changelist" comment="" />
+    <list default="true" id="e78b6140-66fc-4f2e-b33e-b8ed6096472f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201207160442.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201208073819.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201228175730.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210115074726.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210117123752.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/CommandeCrudController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CommandeCancelController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/StripController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ValiderCommandeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/DetailCommande.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Passe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CommandeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/DetailCommandeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/commande_cancel/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/commande_valider/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/order/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/village_green.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/village_green.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classe/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classe/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/LivreurCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/LivreurCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdresseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdresseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Adresse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Adresse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Commande.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commande.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Livreur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Livreur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/OrderType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OrderType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/client/adresse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/adresse.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/client/ajout_adresse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client/ajout_adresse.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +139,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
-      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
@@ -132,7 +171,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
@@ -145,6 +183,11 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1khP2SSVDFbNOmyoqdsm5TKuWja" />
@@ -189,6 +232,24 @@
       <workItem from="1607068464565" duration="7963000" />
       <workItem from="1607231668554" duration="10273000" />
       <workItem from="1607337512423" duration="2104000" />
+      <workItem from="1607411856141" duration="455000" />
+      <workItem from="1607413061608" duration="2176000" />
+      <workItem from="1607429637830" duration="315000" />
+      <workItem from="1607430230508" duration="15859000" />
+      <workItem from="1607500920576" duration="8177000" />
+      <workItem from="1608309910385" duration="502000" />
+      <workItem from="1608310480676" duration="14068000" />
+      <workItem from="1609165671311" duration="10416000" />
+      <workItem from="1609759087772" duration="9632000" />
+      <workItem from="1609919806705" duration="14850000" />
+      <workItem from="1610016305138" duration="4455000" />
+      <workItem from="1610128918613" duration="15003000" />
+      <workItem from="1610181626882" duration="54906000" />
+      <workItem from="1610695970394" duration="29465000" />
+      <workItem from="1610793152790" duration="15000" />
+      <workItem from="1610798142031" duration="238000" />
+      <workItem from="1610886577057" duration="31071000" />
+      <workItem from="1610955908758" duration="2679000" />
     </task>
     <servers />
   </component>
@@ -209,23 +270,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="578" y="292" key="#Composer" timestamp="1606150546611">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="578" y="292" key="#Composer/0.0.1536.824@0.0.1536.824" timestamp="1606150546611" />
-    <state x="884" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606313855273">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="884" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606313855273" />
-    <state x="513" y="135" key="NewPhpClassDialog" timestamp="1606220487982">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="513" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1606220487982" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1606220500587">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1606220500587" />
   </component>
 </project>

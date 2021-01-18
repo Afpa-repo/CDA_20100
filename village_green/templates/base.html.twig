@@ -13,6 +13,7 @@
         <!-- Style css -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% block stylesheets %}{% endblock %}
+        {% block javascript %}{% endblock %}
     </head>
 
     <body>
@@ -40,18 +41,19 @@
                                         <a class="nav-link text-dark" href="" title="Infos"><li class="nav-item">Infos</li></a>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle text-dark" href="#" id="clientDropdown"
-                                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Client</a>
+                                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Client {% if app.user %}<small>({{ app.user.cliPrenom }} {{ app.user.cliNom }})</small>{% endif %}</a>
                                             <div class="dropdown-menu" aria-labelledby="clientDropdown">
 
                                                 {% if app.user %}
                                                     <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+                                                    <a class="dropdown-item" href="{{ path('adresse') }}">Gerer mes adresses de livraison</a>
                                                 {% else %}
                                                         <a class="dropdown-item" href="{{ path('client_new') }}">Inscription</a>
                                                         <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
                                                 {% endif %}
                                             </div>
                                         </li>
-                                        <a class="nav-link text-dark" href="" title="Panier"><li class="nav-item mr-5"><img src="{{ asset('img/HEADER/picto_panier.png') }}" alt="panier"></li></a>
+                                        <a class="nav-link text-dark" href="{{ path('cart') }}" title="Panier"><li class="nav-item mr-5"><img src="{{ asset('img/HEADER/picto_panier.png') }}" alt="panier"></li></a>
                                         <a class="nav-link text-dark" href="" title="Pays"><li class="nav-item ml-5"><img src="{{ asset('img/HEADER/picto_pays.png') }}" alt="pays"></li></a>
                                     </ul>
 
@@ -244,6 +246,8 @@
         <script src="{{ asset('js/script.js') }}"></script>
 
         {% block javascripts %}{% endblock %}
+        {% block strip %}{% endblock %}
     </body>
+
 </html>
 

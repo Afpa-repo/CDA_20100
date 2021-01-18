@@ -47,6 +47,10 @@ class Livreur
         return $this->id;
     }
 
+    public function __toString(){
+        return $this->getLivNom().'[br]'.$this->getLivDescription().'[br]'.$this->getLivPrix()/100;
+    }
+
     public function getLivNom(): ?string
     {
         return $this->livNom;
