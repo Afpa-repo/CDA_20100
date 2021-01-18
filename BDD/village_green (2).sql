@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : mar. 24 nov. 2020 à 10:40
--- Version du serveur :  5.7.24
--- Version de PHP : 7.4.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le : jeu. 07 jan. 2021 à 08:53
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,6 +25,7 @@ DELIMITER $$
 --
 -- Procédures
 --
+DROP PROCEDURE IF EXISTS `delai_moyen`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `delai_moyen` (IN `commande` INT)  BEGIN
 
 SELECT ROUND(AVG(DATEDIFF(cmd_fact_date,cmd_date))) AS "Délai moyen de livraison en jours"
@@ -33,6 +34,7 @@ WHERE cmd_id = commande;
 
 END$$
 
+DROP PROCEDURE IF EXISTS `etat_commande`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `etat_commande` (IN `livr` VARCHAR(250))  BEGIN
 
 SELECT liv_id, liv_date, liv_cmd_id, liv_etat AS "Commandes en cours de livraison"
@@ -46,11 +48,40 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `adresse`
+--
+
+DROP TABLE IF EXISTS `adresse`;
+CREATE TABLE IF NOT EXISTS `adresse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client` int(11) NOT NULL,
+  `adr_num_rue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adr_ville` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adr_pays` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adr_cp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_C35F0816C7440455` (`client`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `adresse`
+--
+
+INSERT INTO `adresse` (`id`, `client`, `adr_num_rue`, `adr_ville`, `adr_pays`, `adr_cp`) VALUES
+(5, 20, '4 Bis Rue de Condé, Appartement 38', 'Amiens', 'AF', '80000'),
+(6, 20, '4 Bis Rue de Condé, Appartement 38', 'Amiens', 'AR', '80000'),
+(7, 19, '4 Bis Rue de Condé', 'Amiens', 'AF', '80000'),
+(8, 19, '1 Allée Paul Eluard', 'Argenteuil', 'FR', '95100');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `client`
 --
 
-CREATE TABLE `client` (
-  `cli_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `cli_id` int(11) NOT NULL AUTO_INCREMENT,
   `cli_nom` varchar(50) DEFAULT NULL,
   `cli_prenom` varchar(50) DEFAULT NULL,
   `cli_email` varchar(250) NOT NULL,
@@ -61,19 +92,25 @@ CREATE TABLE `client` (
   `cli_regl` varchar(50) DEFAULT NULL,
   `cli_categ` varchar(50) DEFAULT NULL,
   `cli_coeff` decimal(5,2) DEFAULT NULL,
-  `cli_com_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cli_com_id` int(11) DEFAULT NULL,
+  `cli_role` varchar(255) NOT NULL,
+  PRIMARY KEY (`cli_id`),
+  KEY `cli_com_id` (`cli_com_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`cli_id`, `cli_nom`, `cli_prenom`, `cli_email`, `cli_password`, `cli_adresse`, `cli_cp`, `cli_ville`, `cli_regl`, `cli_categ`, `cli_coeff`, `cli_com_id`) VALUES
-(1, 'Morel', 'Jacques', '', '', '12 rue de la République', '80000', 'Amiens', 'Immédiat', 'Particulier', '1.00', 1),
-(2, 'Guérin', 'Charles', '', '', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', 'Immédiat', 'Particulier', '1.00', 5),
-(3, 'Boyer', 'Caroline', '', '', 'Rue de l’Eglise', '80330', 'Longueau', 'Différé', 'Professionnel', '1.00', 3),
-(4, 'Perrin', 'Clément', '', '', '56 rue Saint Fuscien', '80700', 'Roye', 'Différé', 'Professionnel', '1.00', 2),
-(5, 'Duval', 'Pascal', '', '', '79 rue Delpech', '80450', 'Camon', 'Différé', 'Professionnel', '1.00', 4);
+INSERT INTO `client` (`cli_id`, `cli_nom`, `cli_prenom`, `cli_email`, `cli_password`, `cli_adresse`, `cli_cp`, `cli_ville`, `cli_regl`, `cli_categ`, `cli_coeff`, `cli_com_id`, `cli_role`) VALUES
+(1, 'Morel', 'Jacques', '', '', '12 rue de la République', '80000', 'Amiens', 'Immédiat', 'Particulier', '1.00', 1, ''),
+(2, 'Guérin', 'Charles', '', '', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', 'Immédiat', 'Particulier', '1.00', 5, ''),
+(3, 'Boyer', 'Caroline', '', '', 'Rue de l’Eglise', '80330', 'Longueau', 'Différé', 'Professionnel', '1.00', 3, ''),
+(4, 'Perrin', 'Clément', '', '', '56 rue Saint Fuscien', '80700', 'Roye', 'Différé', 'Professionnel', '1.00', 2, ''),
+(5, 'Duval', 'Pascal', '', '', '79 rue Delpech', '80450', 'Camon', 'Différé', 'Professionnel', '1.00', 4, ''),
+(17, 'test', 'test', 'test2@test.fr', '$2y$12$FLm069xuGLabtA7b1pUBOeaInpdIFmMvjDHrL7wowSV9jABCZzi/S', '1 rue de la république', '80000', 'Amiens', 'A définir', 'A définir', '1.00', NULL, 'utilisateur'),
+(19, 'Macosso', 'Inacio', 'inaciomacosso@yahoo.com', '$2y$12$LlmN976BZS/6fF4TV7CwYuVQljNBU9gS9XVnLLhdjm9/lvcX.lPuW', '4 Bis Rue de Condé', '80000', 'Amiens', 'A définir', 'A définir', '1.00', NULL, 'utilisateur'),
+(20, 'Macosso', 'Inacio', 'inacio.macosso@yahoo.com', '$2y$12$W8wcac6H8c88XpaVlv.qdOHtzHKSxhMWKqvPGNa2s41392cqvH4gK', '4 Bis Rue de Condé', '80000', 'Cabinda', 'A définir', 'A définir', '1.00', NULL, 'utilisateur');
 
 -- --------------------------------------------------------
 
@@ -81,8 +118,9 @@ INSERT INTO `client` (`cli_id`, `cli_nom`, `cli_prenom`, `cli_email`, `cli_passw
 -- Structure de la table `commande`
 --
 
-CREATE TABLE `commande` (
-  `cmd_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `cmd_id` int(11) NOT NULL AUTO_INCREMENT,
   `cmd_date` date DEFAULT NULL,
   `cmd_reduc` decimal(5,2) DEFAULT NULL,
   `cmd_fact_id` int(11) NOT NULL,
@@ -93,22 +131,24 @@ CREATE TABLE `commande` (
   `cmd_cli_adresse_liv` varchar(50) DEFAULT NULL,
   `cmd_cli_cp_liv` char(5) DEFAULT NULL,
   `cmd_cli_ville_liv` varchar(50) DEFAULT NULL,
-  `cmd_cli_coeff` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cmd_cli_coeff` decimal(5,2) DEFAULT NULL,
+  `cmd_payer` tinyint(1) NOT NULL,
+  PRIMARY KEY (`cmd_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `commande` (`cmd_id`, `cmd_date`, `cmd_reduc`, `cmd_fact_id`, `cmd_fact_date`, `cmd_cli_adresse_fact`, `cmd_cli_cp_fact`, `cmd_cli_ville_fact`, `cmd_cli_adresse_liv`, `cmd_cli_cp_liv`, `cmd_cli_ville_liv`, `cmd_cli_coeff`) VALUES
-(1, '2020-08-03', NULL, 1, '2020-08-06', '12 rue de la République', '80000', 'Amiens', '12 rue de la République', '80000', 'Amiens', NULL),
-(2, '2020-09-01', NULL, 2, '2020-09-04', '56 rue Saint Fuscien', '80700', 'Roye', '56 rue Saint Fuscien', '80700', 'Roye', NULL),
-(3, '2020-07-01', NULL, 3, '2020-07-06', 'Rue de l\'Eglise', '80330', 'Longueau', 'Rue de l\'Eglise', '80330', 'Longueau', NULL),
-(4, '2020-08-12', NULL, 4, '2020-08-14', '56 rue Saint Fuscien', '80700', 'Roye', '56 rue Saint Fuscien', '80700', 'Roye', NULL),
-(5, '2020-05-05', NULL, 5, '2020-05-07', '79 rue Delpech', '80450', 'Camon', '79 rue Delpech', '80450', 'Camon', NULL),
-(6, '2020-09-01', NULL, 6, '2020-09-04', '12 rue de la République', '80000', 'Amiens', '12 rue de la République', '80000', 'Amiens', NULL),
-(7, '2020-09-03', NULL, 7, '2020-09-07', '12 rue de la République', '80000', 'Amiens', '12 rue de la République', '80000', 'Amiens', NULL),
-(8, '2020-09-07', NULL, 8, '2020-09-09', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', NULL);
+INSERT INTO `commande` (`cmd_id`, `cmd_date`, `cmd_reduc`, `cmd_fact_id`, `cmd_fact_date`, `cmd_cli_adresse_fact`, `cmd_cli_cp_fact`, `cmd_cli_ville_fact`, `cmd_cli_adresse_liv`, `cmd_cli_cp_liv`, `cmd_cli_ville_liv`, `cmd_cli_coeff`, `cmd_payer`) VALUES
+(1, '2020-08-03', NULL, 1, '2020-08-06', '12 rue de la République', '80000', 'Amiens', '12 rue de la République', '80000', 'Amiens', NULL, 0),
+(2, '2020-09-01', NULL, 2, '2020-09-04', '56 rue Saint Fuscien', '80700', 'Roye', '56 rue Saint Fuscien', '80700', 'Roye', NULL, 0),
+(3, '2020-07-01', NULL, 3, '2020-07-06', 'Rue de l\'Eglise', '80330', 'Longueau', 'Rue de l\'Eglise', '80330', 'Longueau', NULL, 0),
+(4, '2020-08-12', NULL, 4, '2020-08-14', '56 rue Saint Fuscien', '80700', 'Roye', '56 rue Saint Fuscien', '80700', 'Roye', NULL, 0),
+(5, '2020-05-05', NULL, 5, '2020-05-07', '79 rue Delpech', '80450', 'Camon', '79 rue Delpech', '80450', 'Camon', NULL, 0),
+(6, '2020-09-01', NULL, 6, '2020-09-04', '12 rue de la République', '80000', 'Amiens', '12 rue de la République', '80000', 'Amiens', NULL, 0),
+(7, '2020-09-03', NULL, 7, '2020-09-07', '12 rue de la République', '80000', 'Amiens', '12 rue de la République', '80000', 'Amiens', NULL, 0),
+(8, '2020-09-07', NULL, 8, '2020-09-09', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -116,11 +156,13 @@ INSERT INTO `commande` (`cmd_id`, `cmd_date`, `cmd_reduc`, `cmd_fact_id`, `cmd_f
 -- Structure de la table `commercial`
 --
 
-CREATE TABLE `commercial` (
-  `com_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `commercial`;
+CREATE TABLE IF NOT EXISTS `commercial` (
+  `com_id` int(11) NOT NULL AUTO_INCREMENT,
   `com_nom` varchar(50) DEFAULT NULL,
-  `com_prenom` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `com_prenom` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`com_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `commercial`
@@ -139,11 +181,38 @@ INSERT INTO `commercial` (`com_id`, `com_nom`, `com_prenom`) VALUES
 -- Structure de la table `contient`
 --
 
-CREATE TABLE `contient` (
+DROP TABLE IF EXISTS `contient`;
+CREATE TABLE IF NOT EXISTS `contient` (
   `contient_pro_id` int(11) NOT NULL,
   `contient_liv_id` int(11) NOT NULL,
-  `contient_liv_qte` int(11) DEFAULT NULL
+  PRIMARY KEY (`contient_pro_id`,`contient_liv_id`),
+  KEY `IDX_DC302E56C4B17933` (`contient_liv_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `doctrine_migration_versions`
+--
+
+DROP TABLE IF EXISTS `doctrine_migration_versions`;
+CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
+  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `executed_at` datetime DEFAULT NULL,
+  `execution_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `doctrine_migration_versions`
+--
+
+INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+('DoctrineMigrations\\Version20201202100510', '2020-12-02 10:05:28', 4382),
+('DoctrineMigrations\\Version20201207160442', '2020-12-07 16:06:02', 124),
+('DoctrineMigrations\\Version20201208073819', '2020-12-08 07:38:56', 154),
+('DoctrineMigrations\\Version20201228175730', '2020-12-28 17:58:02', 86),
+('DoctrineMigrations\\Version20210106080252', '2021-01-06 08:03:36', 192);
 
 -- --------------------------------------------------------
 
@@ -151,35 +220,37 @@ CREATE TABLE `contient` (
 -- Structure de la table `envoie`
 --
 
-CREATE TABLE `envoie` (
+DROP TABLE IF EXISTS `envoie`;
+CREATE TABLE IF NOT EXISTS `envoie` (
   `env_four_id` int(11) NOT NULL,
   `env_pro_id` int(11) NOT NULL,
-  `env_qte` int(11) NOT NULL
+  PRIMARY KEY (`env_four_id`,`env_pro_id`),
+  KEY `IDX_4BC1C0028D32B924` (`env_pro_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `envoie`
 --
 
-INSERT INTO `envoie` (`env_four_id`, `env_pro_id`, `env_qte`) VALUES
-(1, 1, 2),
-(1, 3, 4),
-(1, 5, 10),
-(1, 20, 20),
-(1, 22, 31),
-(1, 41, 10),
-(2, 10, 20),
-(2, 29, 56),
-(2, 31, 3),
-(2, 56, 6),
-(3, 4, 5),
-(3, 35, 39),
-(3, 43, 53),
-(4, 11, 2),
-(4, 55, 4),
-(5, 12, 34),
-(5, 15, 12),
-(5, 28, 13);
+INSERT INTO `envoie` (`env_four_id`, `env_pro_id`) VALUES
+(1, 1),
+(1, 3),
+(3, 4),
+(1, 5),
+(2, 10),
+(4, 11),
+(5, 12),
+(5, 15),
+(1, 20),
+(1, 22),
+(5, 28),
+(2, 29),
+(2, 31),
+(3, 35),
+(1, 41),
+(3, 43),
+(4, 55),
+(2, 56);
 
 -- --------------------------------------------------------
 
@@ -187,11 +258,13 @@ INSERT INTO `envoie` (`env_four_id`, `env_pro_id`, `env_qte`) VALUES
 -- Structure de la table `fournisseur`
 --
 
-CREATE TABLE `fournisseur` (
-  `four_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `fournisseur`;
+CREATE TABLE IF NOT EXISTS `fournisseur` (
+  `four_id` int(11) NOT NULL AUTO_INCREMENT,
   `four_nom` varchar(50) DEFAULT NULL,
-  `four_type` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `four_type` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`four_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `fournisseur`
@@ -210,12 +283,15 @@ INSERT INTO `fournisseur` (`four_id`, `four_nom`, `four_type`) VALUES
 -- Structure de la table `livraison`
 --
 
-CREATE TABLE `livraison` (
-  `liv_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `livraison`;
+CREATE TABLE IF NOT EXISTS `livraison` (
+  `liv_id` int(11) NOT NULL AUTO_INCREMENT,
   `liv_date` date DEFAULT NULL,
-  `liv_cmd_id` int(11) NOT NULL,
-  `liv_etat` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `liv_cmd_id` int(11) DEFAULT NULL,
+  `liv_etat` varchar(250) NOT NULL,
+  PRIMARY KEY (`liv_id`),
+  KEY `liv_cmd_id` (`liv_cmd_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `livraison`
@@ -234,12 +310,37 @@ INSERT INTO `livraison` (`liv_id`, `liv_date`, `liv_cmd_id`, `liv_etat`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `livreur`
+--
+
+DROP TABLE IF EXISTS `livreur`;
+CREATE TABLE IF NOT EXISTS `livreur` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `liv_nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `liv_description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `liv_prix` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `livreur`
+--
+
+INSERT INTO `livreur` (`id`, `liv_nom`, `liv_description`, `liv_prix`) VALUES
+(1, 'Colissimo', 'Recevez votre coli chez vous dans les 72 heures avec notre tarif premium.', 10.3);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `passe`
 --
 
-CREATE TABLE `passe` (
+DROP TABLE IF EXISTS `passe`;
+CREATE TABLE IF NOT EXISTS `passe` (
   `passe_cmd_id` int(11) NOT NULL,
-  `passe_cli_id` int(11) NOT NULL
+  `passe_cli_id` int(11) NOT NULL,
+  PRIMARY KEY (`passe_cmd_id`,`passe_cli_id`),
+  KEY `IDX_D317EE5F5A8FBB7A` (`passe_cli_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -262,16 +363,19 @@ INSERT INTO `passe` (`passe_cmd_id`, `passe_cli_id`) VALUES
 -- Structure de la table `produit`
 --
 
-CREATE TABLE `produit` (
-  `pro_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `produit`;
+CREATE TABLE IF NOT EXISTS `produit` (
+  `pro_id` int(11) NOT NULL AUTO_INCREMENT,
   `pro_lib` varchar(50) DEFAULT NULL,
   `pro_descr` varchar(250) DEFAULT NULL,
   `pro_prix_achat` decimal(10,2) DEFAULT NULL,
   `pro_photo` varchar(250) DEFAULT NULL,
   `pro_stock` int(11) DEFAULT NULL,
   `pro_actif` tinyint(1) DEFAULT NULL,
-  `pro_s_rub_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `pro_s_rub_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pro_id`),
+  KEY `pro_s_rub_id` (`pro_s_rub_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `produit`
@@ -348,10 +452,12 @@ INSERT INTO `produit` (`pro_id`, `pro_lib`, `pro_descr`, `pro_prix_achat`, `pro_
 -- Structure de la table `rubrique`
 --
 
-CREATE TABLE `rubrique` (
-  `rub_id` int(11) NOT NULL,
-  `rub_nom` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `rubrique`;
+CREATE TABLE IF NOT EXISTS `rubrique` (
+  `rub_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rub_nom` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`rub_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `rubrique`
@@ -374,40 +480,40 @@ INSERT INTO `rubrique` (`rub_id`, `rub_nom`) VALUES
 -- Structure de la table `se_compose_de`
 --
 
-CREATE TABLE `se_compose_de` (
+DROP TABLE IF EXISTS `se_compose_de`;
+CREATE TABLE IF NOT EXISTS `se_compose_de` (
   `se_compose_de_pro_id` int(11) NOT NULL,
   `se_compose_de_cmd_id` int(11) NOT NULL,
-  `se_compose_de_cmd_nb_produits` int(11) DEFAULT NULL,
-  `se_compose_de_pro_prix_vente` decimal(10,2) DEFAULT NULL,
-  `se_compose_de_cmd_prix_tot` decimal(10,2) DEFAULT NULL
+  PRIMARY KEY (`se_compose_de_pro_id`,`se_compose_de_cmd_id`),
+  KEY `IDX_5DF0822D6369EF3` (`se_compose_de_cmd_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `se_compose_de`
 --
 
-INSERT INTO `se_compose_de` (`se_compose_de_pro_id`, `se_compose_de_cmd_id`, `se_compose_de_cmd_nb_produits`, `se_compose_de_pro_prix_vente`, `se_compose_de_cmd_prix_tot`) VALUES
-(4, 2, 1, '50.00', '50.00'),
-(5, 1, 10, '80.00', '800.00'),
-(10, 2, 4, '150.00', '600.00'),
-(10, 3, 2, '150.00', '300.00'),
-(11, 1, 20, '21.00', '420.00'),
-(12, 1, 35, '22.00', '770.00'),
-(15, 1, 150, '225.00', '33750.00'),
-(15, 2, 100, '225.00', '22500.00'),
-(20, 1, 17, '15.00', '255.00'),
-(22, 2, 32, '435.00', '13920.00'),
-(22, 4, 6, '435.00', '2610.00'),
-(23, 7, 5, '1910.00', '9550.00'),
-(28, 1, 2, '100.00', '200.00'),
-(29, 1, 12, '310.00', '3720.00'),
-(35, 2, 65, '160.00', '10400.00'),
-(35, 5, 9, '160.00', '1440.00'),
-(41, 1, 3, '180.00', '540.00'),
-(43, 2, 50, '87.00', '4350.00'),
-(45, 8, 10, '20.00', '200.00'),
-(55, 2, 37, '70.00', '2590.00'),
-(62, 6, 2, '15.00', '30.00');
+INSERT INTO `se_compose_de` (`se_compose_de_pro_id`, `se_compose_de_cmd_id`) VALUES
+(5, 1),
+(11, 1),
+(12, 1),
+(15, 1),
+(20, 1),
+(28, 1),
+(29, 1),
+(41, 1),
+(4, 2),
+(10, 2),
+(15, 2),
+(22, 2),
+(35, 2),
+(43, 2),
+(55, 2),
+(10, 3),
+(22, 4),
+(35, 5),
+(62, 6),
+(23, 7),
+(45, 8);
 
 -- --------------------------------------------------------
 
@@ -415,11 +521,14 @@ INSERT INTO `se_compose_de` (`se_compose_de_pro_id`, `se_compose_de_cmd_id`, `se
 -- Structure de la table `sous_rubrique`
 --
 
-CREATE TABLE `sous_rubrique` (
-  `s_rub_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `sous_rubrique`;
+CREATE TABLE IF NOT EXISTS `sous_rubrique` (
+  `s_rub_id` int(11) NOT NULL AUTO_INCREMENT,
   `s_rub_nom` varchar(50) DEFAULT NULL,
-  `s_rub_rub_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `s_rub_rub_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`s_rub_id`),
+  KEY `s_rub_rub_id` (`s_rub_rub_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `sous_rubrique`
@@ -474,144 +583,14 @@ INSERT INTO `sous_rubrique` (`s_rub_id`, `s_rub_nom`, `s_rub_rub_id`) VALUES
 (46, 'Métronomes', 9);
 
 --
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`cli_id`),
-  ADD KEY `cli_com_id` (`cli_com_id`);
-
---
--- Index pour la table `commande`
---
-ALTER TABLE `commande`
-  ADD PRIMARY KEY (`cmd_id`);
-
---
--- Index pour la table `commercial`
---
-ALTER TABLE `commercial`
-  ADD PRIMARY KEY (`com_id`);
-
---
--- Index pour la table `contient`
---
-ALTER TABLE `contient`
-  ADD PRIMARY KEY (`contient_pro_id`,`contient_liv_id`),
-  ADD KEY `contient_liv_id` (`contient_liv_id`);
-
---
--- Index pour la table `envoie`
---
-ALTER TABLE `envoie`
-  ADD PRIMARY KEY (`env_four_id`,`env_pro_id`),
-  ADD KEY `env_pro_id` (`env_pro_id`);
-
---
--- Index pour la table `fournisseur`
---
-ALTER TABLE `fournisseur`
-  ADD PRIMARY KEY (`four_id`);
-
---
--- Index pour la table `livraison`
---
-ALTER TABLE `livraison`
-  ADD PRIMARY KEY (`liv_id`),
-  ADD KEY `liv_cmd_id` (`liv_cmd_id`);
-
---
--- Index pour la table `passe`
---
-ALTER TABLE `passe`
-  ADD PRIMARY KEY (`passe_cmd_id`,`passe_cli_id`),
-  ADD KEY `passe_cli_id` (`passe_cli_id`);
-
---
--- Index pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD PRIMARY KEY (`pro_id`),
-  ADD KEY `pro_s_rub_id` (`pro_s_rub_id`);
-
---
--- Index pour la table `rubrique`
---
-ALTER TABLE `rubrique`
-  ADD PRIMARY KEY (`rub_id`);
-
---
--- Index pour la table `se_compose_de`
---
-ALTER TABLE `se_compose_de`
-  ADD PRIMARY KEY (`se_compose_de_pro_id`,`se_compose_de_cmd_id`),
-  ADD KEY `se_compose_de_cmd_id` (`se_compose_de_cmd_id`);
-
---
--- Index pour la table `sous_rubrique`
---
-ALTER TABLE `sous_rubrique`
-  ADD PRIMARY KEY (`s_rub_id`),
-  ADD KEY `s_rub_rub_id` (`s_rub_rub_id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `client`
---
-ALTER TABLE `client`
-  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT pour la table `commande`
---
-ALTER TABLE `commande`
-  MODIFY `cmd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `commercial`
---
-ALTER TABLE `commercial`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT pour la table `fournisseur`
---
-ALTER TABLE `fournisseur`
-  MODIFY `four_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT pour la table `livraison`
---
-ALTER TABLE `livraison`
-  MODIFY `liv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `produit`
---
-ALTER TABLE `produit`
-  MODIFY `pro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
-
---
--- AUTO_INCREMENT pour la table `rubrique`
---
-ALTER TABLE `rubrique`
-  MODIFY `rub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT pour la table `sous_rubrique`
---
-ALTER TABLE `sous_rubrique`
-  MODIFY `s_rub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
-
---
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `adresse`
+--
+ALTER TABLE `adresse`
+  ADD CONSTRAINT `FK_C35F0816C7440455` FOREIGN KEY (`client`) REFERENCES `client` (`cli_id`);
 
 --
 -- Contraintes pour la table `client`
