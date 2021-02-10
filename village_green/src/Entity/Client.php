@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -54,8 +52,8 @@ class Client implements UserInterface
     private $cliPassword;
 
     /**
-    * @Assert\EqualTo(propertyPath="cli_password", message="Vos mots de passe sont différents")
-    */
+     * @Assert\EqualTo(propertyPath="cli_password", message="Vos mots de passe sont différents")
+     */
     public $cliConfPassword;
 
     /**
@@ -123,11 +121,18 @@ class Client implements UserInterface
     private $cliRole;
 
     /**
+     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="adr_cli_id")
+     */
+    private $cli_adresses;
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->passeCmd = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cli_adresses = new ArrayCollection();
     }
 
     public function getCliId(): ?int
@@ -298,7 +303,7 @@ class Client implements UserInterface
     public function getRoles()
     {
         if ($this->cliRole == "administrateur")
-        return ["ROLE_ADMIN"];
+            return ["ROLE_ADMIN"];
         if ($this->cliRole == "utilisateur")
             return ["ROLE_USER"];
         return [];
@@ -320,7 +325,6 @@ class Client implements UserInterface
     public function eraseCredentials()
     {}
 
-    // Méthode qui retourne le mot de passe, méthode utile à rajouter si le nom du password est différent ici on a cli_password
     public function getPassword()
     {
         return $this->getCliPassword();
@@ -334,6 +338,36 @@ class Client implements UserInterface
     public function setCliRole(string $cliRole): self
     {
         $this->cliRole = $cliRole;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adresse[]
+     */
+    public function getCliAdresses(): Collection
+    {
+        return $this->cli_adresses;
+    }
+
+    public function addCliAdress(Adresse $cliAdress): self
+    {
+        if (!$this->cli_adresses->contains($cliAdress)) {
+            $this->cli_adresses[] = $cliAdress;
+            $cliAdress->setAdrCliId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCliAdress(Adresse $cliAdress): self
+    {
+        if ($this->cli_adresses->removeElement($cliAdress)) {
+            // set the owning side to null (unless already changed)
+            if ($cliAdress->getAdrCliId() === $this) {
+                $cliAdress->setAdrCliId(null);
+            }
+        }
 
         return $this;
     }

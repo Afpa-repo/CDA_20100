@@ -66,10 +66,9 @@ class SousRubrique
 
         return $this;
     }
-
     public function __toString(): ?string
     {
-    return $this->getSRubNom();
+        return $this->getSRubNom();
     }
 
 }

@@ -9,16 +9,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SecurityController extends AbstractController
 {
-/**
-* @Route("/login", name="login", methods={"GET", "POST"})
-* @param AuthenticationUtils $authenticationUtils
-* @return Response
-*/
+    /**
+     * @Route("/login", name="login", methods={"GET", "POST"})
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
+     */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // Récupération des erreurs de connexion
         $error = $authenticationUtils->getLastAuthenticationError();
-        
         // Récupération du username du dernier utilisateur connecté
         $lastUsername = $authenticationUtils->getLastUsername();
 
