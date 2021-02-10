@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 02 déc. 2020 à 15:21
+-- Généré le : mar. 24 nov. 2020 à 10:40
 -- Version du serveur :  5.7.24
--- Version de PHP : 7.4.4
+-- Version de PHP : 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -62,23 +61,19 @@ CREATE TABLE `client` (
   `cli_regl` varchar(50) DEFAULT NULL,
   `cli_categ` varchar(50) DEFAULT NULL,
   `cli_coeff` decimal(5,2) DEFAULT NULL,
-  `cli_com_id` int(11) DEFAULT NULL,
-  `cli_role` varchar(255) NOT NULL
+  `cli_com_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`cli_id`, `cli_nom`, `cli_prenom`, `cli_email`, `cli_password`, `cli_adresse`, `cli_cp`, `cli_ville`, `cli_regl`, `cli_categ`, `cli_coeff`, `cli_com_id`, `cli_role`) VALUES
-(1, 'Morel', 'Jacques', '', '', '12 rue de la République', '80000', 'Amiens', 'Immédiat', 'Particulier', '1.00', 1, ''),
-(2, 'Guérin', 'Charles', '', '', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', 'Immédiat', 'Particulier', '1.00', 5, ''),
-(3, 'Boyer', 'Caroline', '', '', 'Rue de l’Eglise', '80330', 'Longueau', 'Différé', 'Professionnel', '1.00', 3, ''),
-(4, 'Perrin', 'Clément', '', '', '56 rue Saint Fuscien', '80700', 'Roye', 'Différé', 'Professionnel', '1.00', 2, ''),
-(5, 'Duval', 'Pascal', '', '', '79 rue Delpech', '80450', 'Camon', 'Différé', 'Professionnel', '1.00', 4, ''),
-(7, 'Potelle', 'Caroline', 'caroline@afpa.fr', '$2y$13$P/.PAPoZ5vSKtzPn6ix9TOOwwvgESYkR284KvRgI6nshp9bAvUQjS', '22 rue des Fleurs', '80090', 'Amiens', NULL, NULL, NULL, NULL, ''),
-(9, 'Dumas', 'Clément', 'clement@afpa.fr', '$2y$12$wNActvA2DcB9no1EF8JMHeN1nTg0CBSWI21vNeiiZwVxtTGOkNeeK', '12 rue de la République', '80610', 'Saint Ouen', NULL, NULL, NULL, NULL, 'utilisateur'),
-(10, 'Dumas', 'Clément', 'clement2@afpa.fr', '$2y$12$nJhFiJeS9dwxjrKroRcAfuqgmHWpyCGxU7oQiWbgBCPpP1A2Xcd5C', '12 rue de la République', '80610', 'Saint Ouen', NULL, NULL, NULL, NULL, 'utilisateur');
+INSERT INTO `client` (`cli_id`, `cli_nom`, `cli_prenom`, `cli_email`, `cli_password`, `cli_adresse`, `cli_cp`, `cli_ville`, `cli_regl`, `cli_categ`, `cli_coeff`, `cli_com_id`) VALUES
+(1, 'Morel', 'Jacques', '', '', '12 rue de la République', '80000', 'Amiens', 'Immédiat', 'Particulier', '1.00', 1),
+(2, 'Guérin', 'Charles', '', '', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', 'Immédiat', 'Particulier', '1.00', 5),
+(3, 'Boyer', 'Caroline', '', '', 'Rue de l’Eglise', '80330', 'Longueau', 'Différé', 'Professionnel', '1.00', 3),
+(4, 'Perrin', 'Clément', '', '', '56 rue Saint Fuscien', '80700', 'Roye', 'Différé', 'Professionnel', '1.00', 2),
+(5, 'Duval', 'Pascal', '', '', '79 rue Delpech', '80450', 'Camon', 'Différé', 'Professionnel', '1.00', 4);
 
 -- --------------------------------------------------------
 
@@ -146,27 +141,9 @@ INSERT INTO `commercial` (`com_id`, `com_nom`, `com_prenom`) VALUES
 
 CREATE TABLE `contient` (
   `contient_pro_id` int(11) NOT NULL,
-  `contient_liv_id` int(11) NOT NULL
+  `contient_liv_id` int(11) NOT NULL,
+  `contient_liv_qte` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `doctrine_migration_versions`
---
-
-CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
-  `executed_at` datetime DEFAULT NULL,
-  `execution_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Déchargement des données de la table `doctrine_migration_versions`
---
-
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20201202133410', '2020-12-02 13:34:22', 565);
 
 -- --------------------------------------------------------
 
@@ -176,32 +153,33 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 
 CREATE TABLE `envoie` (
   `env_four_id` int(11) NOT NULL,
-  `env_pro_id` int(11) NOT NULL
+  `env_pro_id` int(11) NOT NULL,
+  `env_qte` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `envoie`
 --
 
-INSERT INTO `envoie` (`env_four_id`, `env_pro_id`) VALUES
-(1, 1),
-(1, 3),
-(3, 4),
-(1, 5),
-(2, 10),
-(4, 11),
-(5, 12),
-(5, 15),
-(1, 20),
-(1, 22),
-(5, 28),
-(2, 29),
-(2, 31),
-(3, 35),
-(1, 41),
-(3, 43),
-(4, 55),
-(2, 56);
+INSERT INTO `envoie` (`env_four_id`, `env_pro_id`, `env_qte`) VALUES
+(1, 1, 2),
+(1, 3, 4),
+(1, 5, 10),
+(1, 20, 20),
+(1, 22, 31),
+(1, 41, 10),
+(2, 10, 20),
+(2, 29, 56),
+(2, 31, 3),
+(2, 56, 6),
+(3, 4, 5),
+(3, 35, 39),
+(3, 43, 53),
+(4, 11, 2),
+(4, 55, 4),
+(5, 12, 34),
+(5, 15, 12),
+(5, 28, 13);
 
 -- --------------------------------------------------------
 
@@ -235,7 +213,7 @@ INSERT INTO `fournisseur` (`four_id`, `four_nom`, `four_type`) VALUES
 CREATE TABLE `livraison` (
   `liv_id` int(11) NOT NULL,
   `liv_date` date DEFAULT NULL,
-  `liv_cmd_id` int(11) DEFAULT NULL,
+  `liv_cmd_id` int(11) NOT NULL,
   `liv_etat` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -292,7 +270,7 @@ CREATE TABLE `produit` (
   `pro_photo` varchar(250) DEFAULT NULL,
   `pro_stock` int(11) DEFAULT NULL,
   `pro_actif` tinyint(1) DEFAULT NULL,
-  `pro_s_rub_id` int(11) DEFAULT NULL
+  `pro_s_rub_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -305,7 +283,7 @@ INSERT INTO `produit` (`pro_id`, `pro_lib`, `pro_descr`, `pro_prix_achat`, `pro_
 (3, 'Startone CG-851', 'Taille: 1/8 - Corps en tilleul - Manche en nato - Touche en érable - Diapason: 465 mm - Largeur au sillet: 39 mm - Filet de corps noir - Longueur totale: 762 mm - Cordes en nylon - Couleur: Rose', '31.00', '394726.jpg', 12, 0, 2),
 (4, 'Harley Benton GL-2NT', 'Guitare classique 1/8 - Table en épicéa - Fond et éclisses en acajou (Entandrophragma cylindricum) - Manche en nato - Touche en blackwood (Pinus radiata) - Filet noir - 17 frettes - Diapason: 433 mm', '49.00', '371679.jpg', 56, 0, 2),
 (5, 'Harley Benton D-120CE', 'Dreadnought - Pan coupé - Table en épicéa - Fond et éclisses en acajou - Manche en acajou - Profil du manche en C - Touche en Roseacer - 20 frettes - Repères \"points\" - Diapason: 650 mm', '79.00', '157819.jpg', 150, 0, 3),
-(6, 'Takamine EF341SC', 'Modèle Bruce Springsteen -Dreadnought - Pan coupé - Table en cèdre massif - Fond et éclisses en érable - Touche et chevalet en palissandre - Repères \"flocons de neige\" en nacre', '111.11', '152211.jpg', 13, 0, 3),
+(6, 'Takamine EF341SC', 'Modèle Bruce Springsteen -Dreadnought - Pan coupé - Table en cèdre massif - Fond et éclisses en érable - Touche et chevalet en palissandre - Repères \"flocons de neige\" en nacre', '1.11', '152211.jpg', 13, 0, 3),
 (7, 'Harley Benton JB-75MN', '4 cordes - Série Vintage - Corps en frêne américain - Manche vissé en érable avec bande en Roseacer', '158.00', '224321.jpg', 450, 0, 4),
 (8, 'Marcus Miller V7 Swamp Ash-4', '4 cordes - Fabriquée par Sire - Corps en frêne des marais - Manche 1 pièce en érable', '499.00', '446264.jpg', 356, 0, 4),
 (9, 'Harley Benton Kahuna', 'Electro-acoustique - Série Custom Line Kahuna - Taille Traveller - Table en épicéa', '148.00', '11351477_800.jpg', 28, 0, 5),
@@ -367,37 +345,6 @@ INSERT INTO `produit` (`pro_id`, `pro_lib`, `pro_descr`, `pro_prix_achat`, `pro_
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `produits_fournisseurs`
--- (Voir ci-dessous la vue réelle)
---
-CREATE TABLE `produits_fournisseurs` (
-);
-
--- --------------------------------------------------------
-
---
--- Doublure de structure pour la vue `prod_sr_r`
--- (Voir ci-dessous la vue réelle)
---
-CREATE TABLE `prod_sr_r` (
-`pro_id` int(11)
-,`pro_lib` varchar(50)
-,`pro_descr` varchar(250)
-,`pro_prix_achat` decimal(10,2)
-,`pro_photo` varchar(250)
-,`pro_stock` int(11)
-,`pro_actif` tinyint(1)
-,`pro_s_rub_id` int(11)
-,`s_rub_id` int(11)
-,`s_rub_nom` varchar(50)
-,`s_rub_rub_id` int(11)
-,`rub_id` int(11)
-,`rub_nom` varchar(50)
-);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `rubrique`
 --
 
@@ -429,35 +376,38 @@ INSERT INTO `rubrique` (`rub_id`, `rub_nom`) VALUES
 
 CREATE TABLE `se_compose_de` (
   `se_compose_de_pro_id` int(11) NOT NULL,
-  `se_compose_de_cmd_id` int(11) NOT NULL
+  `se_compose_de_cmd_id` int(11) NOT NULL,
+  `se_compose_de_cmd_nb_produits` int(11) DEFAULT NULL,
+  `se_compose_de_pro_prix_vente` decimal(10,2) DEFAULT NULL,
+  `se_compose_de_cmd_prix_tot` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `se_compose_de`
 --
 
-INSERT INTO `se_compose_de` (`se_compose_de_pro_id`, `se_compose_de_cmd_id`) VALUES
-(5, 1),
-(11, 1),
-(12, 1),
-(15, 1),
-(20, 1),
-(28, 1),
-(29, 1),
-(41, 1),
-(4, 2),
-(10, 2),
-(15, 2),
-(22, 2),
-(35, 2),
-(43, 2),
-(55, 2),
-(10, 3),
-(22, 4),
-(35, 5),
-(62, 6),
-(23, 7),
-(45, 8);
+INSERT INTO `se_compose_de` (`se_compose_de_pro_id`, `se_compose_de_cmd_id`, `se_compose_de_cmd_nb_produits`, `se_compose_de_pro_prix_vente`, `se_compose_de_cmd_prix_tot`) VALUES
+(4, 2, 1, '50.00', '50.00'),
+(5, 1, 10, '80.00', '800.00'),
+(10, 2, 4, '150.00', '600.00'),
+(10, 3, 2, '150.00', '300.00'),
+(11, 1, 20, '21.00', '420.00'),
+(12, 1, 35, '22.00', '770.00'),
+(15, 1, 150, '225.00', '33750.00'),
+(15, 2, 100, '225.00', '22500.00'),
+(20, 1, 17, '15.00', '255.00'),
+(22, 2, 32, '435.00', '13920.00'),
+(22, 4, 6, '435.00', '2610.00'),
+(23, 7, 5, '1910.00', '9550.00'),
+(28, 1, 2, '100.00', '200.00'),
+(29, 1, 12, '310.00', '3720.00'),
+(35, 2, 65, '160.00', '10400.00'),
+(35, 5, 9, '160.00', '1440.00'),
+(41, 1, 3, '180.00', '540.00'),
+(43, 2, 50, '87.00', '4350.00'),
+(45, 8, 10, '20.00', '200.00'),
+(55, 2, 37, '70.00', '2590.00'),
+(62, 6, 2, '15.00', '30.00');
 
 -- --------------------------------------------------------
 
@@ -468,7 +418,7 @@ INSERT INTO `se_compose_de` (`se_compose_de_pro_id`, `se_compose_de_cmd_id`) VAL
 CREATE TABLE `sous_rubrique` (
   `s_rub_id` int(11) NOT NULL,
   `s_rub_nom` varchar(50) DEFAULT NULL,
-  `s_rub_rub_id` int(11) DEFAULT NULL
+  `s_rub_rub_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -523,24 +473,6 @@ INSERT INTO `sous_rubrique` (`s_rub_id`, `s_rub_nom`, `s_rub_rub_id`) VALUES
 (45, 'Supports de Stockage', 9),
 (46, 'Métronomes', 9);
 
--- --------------------------------------------------------
-
---
--- Structure de la vue `produits_fournisseurs`
---
-DROP TABLE IF EXISTS `produits_fournisseurs`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `produits_fournisseurs`  AS  select `produit`.`pro_id` AS `pro_id`,`produit`.`pro_lib` AS `pro_lib`,`produit`.`pro_descr` AS `pro_descr`,`produit`.`pro_prix_achat` AS `pro_prix_achat`,`produit`.`pro_photo` AS `pro_photo`,`produit`.`pro_stock` AS `pro_stock`,`produit`.`pro_actif` AS `pro_actif`,`produit`.`pro_s_rub_id` AS `pro_s_rub_id`,`envoie`.`env_four_id` AS `env_four_id`,`envoie`.`env_pro_id` AS `env_pro_id`,`envoie`.`env_qte` AS `env_qte`,`fournisseur`.`four_id` AS `four_id`,`fournisseur`.`four_nom` AS `four_nom`,`fournisseur`.`four_type` AS `four_type` from ((`produit` join `envoie`) join `fournisseur`) where ((`produit`.`pro_id` = `envoie`.`env_pro_id`) and (`envoie`.`env_four_id` = `fournisseur`.`four_id`)) ;
-
--- --------------------------------------------------------
-
---
--- Structure de la vue `prod_sr_r`
---
-DROP TABLE IF EXISTS `prod_sr_r`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prod_sr_r`  AS  select `produit`.`pro_id` AS `pro_id`,`produit`.`pro_lib` AS `pro_lib`,`produit`.`pro_descr` AS `pro_descr`,`produit`.`pro_prix_achat` AS `pro_prix_achat`,`produit`.`pro_photo` AS `pro_photo`,`produit`.`pro_stock` AS `pro_stock`,`produit`.`pro_actif` AS `pro_actif`,`produit`.`pro_s_rub_id` AS `pro_s_rub_id`,`sous_rubrique`.`s_rub_id` AS `s_rub_id`,`sous_rubrique`.`s_rub_nom` AS `s_rub_nom`,`sous_rubrique`.`s_rub_rub_id` AS `s_rub_rub_id`,`rubrique`.`rub_id` AS `rub_id`,`rubrique`.`rub_nom` AS `rub_nom` from ((`produit` join `sous_rubrique`) join `rubrique`) where ((`rubrique`.`rub_id` = `sous_rubrique`.`s_rub_id`) and (`sous_rubrique`.`s_rub_id` = `produit`.`pro_s_rub_id`)) ;
-
 --
 -- Index pour les tables déchargées
 --
@@ -569,20 +501,14 @@ ALTER TABLE `commercial`
 --
 ALTER TABLE `contient`
   ADD PRIMARY KEY (`contient_pro_id`,`contient_liv_id`),
-  ADD KEY `IDX_DC302E56C4B17933` (`contient_liv_id`);
-
---
--- Index pour la table `doctrine_migration_versions`
---
-ALTER TABLE `doctrine_migration_versions`
-  ADD PRIMARY KEY (`version`);
+  ADD KEY `contient_liv_id` (`contient_liv_id`);
 
 --
 -- Index pour la table `envoie`
 --
 ALTER TABLE `envoie`
   ADD PRIMARY KEY (`env_four_id`,`env_pro_id`),
-  ADD KEY `IDX_4BC1C0028D32B924` (`env_pro_id`);
+  ADD KEY `env_pro_id` (`env_pro_id`);
 
 --
 -- Index pour la table `fournisseur`
@@ -602,7 +528,7 @@ ALTER TABLE `livraison`
 --
 ALTER TABLE `passe`
   ADD PRIMARY KEY (`passe_cmd_id`,`passe_cli_id`),
-  ADD KEY `IDX_D317EE5F5A8FBB7A` (`passe_cli_id`);
+  ADD KEY `passe_cli_id` (`passe_cli_id`);
 
 --
 -- Index pour la table `produit`
@@ -622,7 +548,7 @@ ALTER TABLE `rubrique`
 --
 ALTER TABLE `se_compose_de`
   ADD PRIMARY KEY (`se_compose_de_pro_id`,`se_compose_de_cmd_id`),
-  ADD KEY `IDX_5DF0822D6369EF3` (`se_compose_de_cmd_id`);
+  ADD KEY `se_compose_de_cmd_id` (`se_compose_de_cmd_id`);
 
 --
 -- Index pour la table `sous_rubrique`
@@ -639,7 +565,7 @@ ALTER TABLE `sous_rubrique`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
