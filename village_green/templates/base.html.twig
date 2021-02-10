@@ -80,8 +80,12 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-white mr-4" href="#" id="produitDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produits</a>
                                         <div class="dropdown-menu" aria-labelledby="produitDropdown">
+                                        {% if is_granted('ROLE_ADMIN') %}
                                                 <a class="dropdown-item" href="{{ path('produit_index') }}">Liste</a>
                                                 <a class="dropdown-item" href="{{ path('produit_new') }}">Ajouter Produit(s)</a>
+                                        {% else %}
+                                                <a class="dropdown-item" href="{{ path('produit_index') }}">Liste</a>
+                                        {% endif %}
                                         </div>
                                 </li>
                                 <a class="nav-link text-white" href="" title="Service"><li class="nav-item ml-5 mr-5 mt-2">Service</li></a>

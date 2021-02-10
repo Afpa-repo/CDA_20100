@@ -28,7 +28,7 @@
             {{ form_label(form.cliPassword, 'Créer votre mot de passe :') }}
             </div>
             <div class="col-4 pl-0">
-            {{ form_widget(form.cliPassword) }}
+            {{ form_widget(form.cliPassword, {'id':'password'}) }}
             {{ form_help(form.cliPassword) }}
             </div>
             <div id="cli_conf_password" class="col-2 pl-0">
@@ -40,8 +40,19 @@
             </div>
         </div>      
     </div>
-        
-</div>        
+
+    <div class="col-12 mr-3">  
+        <div class="form-group row">
+            <div class="col-2 pl-0"></div>
+            <div class="col-4 pl-0">
+                <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="strength"></div>
+                </div>
+            </div>
+        </div>      
+    </div>
+
+</div>    
 
 <div class="col-12 mt-5 mb-5" id="titre">
         <h2>Créez vos identifiants</h2>
@@ -114,5 +125,7 @@
 </div>
 
 {{ form_end(form) }}
+
+<script src="{{ asset('js/password.js') }}"></script>
 
 {% endblock %}

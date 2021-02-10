@@ -31,7 +31,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[A-Za-z0-9éèàçâêûîôäëüïö\_\'\-\s]+$/',
-                        'message' => 'Caratère(s) non valide(s)'
+                        'message' => 'Caratère(s) non valide(s)',
                     ]),
                 ]
             ])
@@ -49,7 +49,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[A-Za-z0-9éèàçâêûîôäëüïö\_\'\-\s]+$/',
-                        'message' => 'Caratère(s) non valide(s)'
+                        'message' => 'Caratère(s) non valide(s)',
                     ]),
                 ]
             ])
@@ -67,7 +67,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$/',
-                        'message' => 'Caratère(s) non valide(s)'
+                        'message' => 'Caratère(s) non valide(s)',
                     ]),
                 ]
             ])
@@ -85,7 +85,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\w).{8,}$/',
-                        'message' => 'Caratère(s) non valide(s)'
+                        'message' => 'Caratère(s) non valide(s)',
                     ]),
                 ]
             ])
@@ -117,7 +117,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^([0-9a-zA-Z\'àâéèêôùûçÀÂÉÈÔÙÛÇ\s\-]{1,50})$/',
-                        'message' => 'Caratère(s) non valide(s)'
+                        'message' => 'Caratère(s) non valide(s)',
                     ]),
                 ]
             ])
@@ -135,7 +135,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[0-9]{5}$/',
-                        'message' => 'Caratère(s) non valide(s)'
+                        'message' => 'Caratère(s) non valide(s)',
                     ]),
                 ]
             ])
@@ -153,7 +153,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
                         'pattern' => '/^[A-Za-z0-9éèàçâêûîôäëüïö\_\'\-\s]+$/',
-                        'message' => 'Caratère(s) non valide(s)'
+                        'message' => 'Caratère(s) non valide(s)',
                     ]),
                 ]
             ])
