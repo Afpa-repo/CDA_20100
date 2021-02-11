@@ -38,6 +38,20 @@ class Commande
     private $cmdReduc;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="cmd_fact_id", type="integer", nullable=false)
+     */
+    private $cmdFactId;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="cmd_fact_date", type="date", nullable=true)
+     */
+    private $cmdFactDate;
+
+    /**
      * @var string|null
      *
      * @ORM\Column(name="cmd_cli_adresse_fact", type="string", length=50, nullable=true)
@@ -87,13 +101,6 @@ class Commande
     private $cmdCliCoeff;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="cmd_payer", type="boolean", nullable=false)
-     */
-    private $cmdPayer;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Client", inversedBy="passeCmd")
@@ -116,38 +123,12 @@ class Commande
     private $seComposeDePro;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $cmd_liv_nom;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $cmd_liv_prix;
-
-    /**
-     * @ORM\OneToMany(targetEntity=DetailCommande::class, mappedBy="det_cmd_cmd_id")
-     */
-    private $cmd_det_cmd_id;
-
-    /**
-     * @ORM\Column(name="cmd_reference", type="string", length=255, nullable=false)
-     */
-    private $cmdReference;
-
-    /**
-     * @ORM\Column(name="cmd_strip_id_session", type="string", length=255, nullable=true)
-     */
-    private $cmdStripIdSession;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->passeCli = new ArrayCollection();
-        $this->seComposeDePro = new ArrayCollection();
-        $this->cmd_det_cmd_id = new ArrayCollection();
+        $this->passeCli = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seComposeDePro = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getCmdId(): ?int
@@ -175,6 +156,30 @@ class Commande
     public function setCmdReduc(?string $cmdReduc): self
     {
         $this->cmdReduc = $cmdReduc;
+
+        return $this;
+    }
+
+    public function getCmdFactId(): ?int
+    {
+        return $this->cmdFactId;
+    }
+
+    public function setCmdFactId(int $cmdFactId): self
+    {
+        $this->cmdFactId = $cmdFactId;
+
+        return $this;
+    }
+
+    public function getCmdFactDate(): ?\DateTimeInterface
+    {
+        return $this->cmdFactDate;
+    }
+
+    public function setCmdFactDate(?\DateTimeInterface $cmdFactDate): self
+    {
+        $this->cmdFactDate = $cmdFactDate;
 
         return $this;
     }
@@ -263,18 +268,6 @@ class Commande
         return $this;
     }
 
-    public function getCmdPayer(): ?bool
-    {
-        return $this->cmdPayer;
-    }
-
-    public function setCmdPayer(bool $cmdPayer): self
-    {
-        $this->cmdPayer = $cmdPayer;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Client[]
      */
@@ -322,84 +315,6 @@ class Commande
         if ($this->seComposeDePro->removeElement($seComposeDePro)) {
             $seComposeDePro->removeSeComposeDeCmd($this);
         }
-
-        return $this;
-    }
-
-    public function getCmdLivNom(): ?string
-    {
-        return $this->cmd_liv_nom;
-    }
-
-    public function setCmdLivNom(string $cmd_liv_nom): self
-    {
-        $this->cmd_liv_nom = $cmd_liv_nom;
-
-        return $this;
-    }
-
-    public function getCmdLivPrix(): ?float
-    {
-        return $this->cmd_liv_prix;
-    }
-
-    public function setCmdLivPrix(float $cmd_liv_prix): self
-    {
-        $this->cmd_liv_prix = $cmd_liv_prix;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|DetailCommande[]
-     */
-    public function getCmdDetCmdId(): Collection
-    {
-        return $this->cmd_det_cmd_id;
-    }
-
-    public function addCmdDetCmdId(DetailCommande $cmdDetCmdId): self
-    {
-        if (!$this->cmd_det_cmd_id->contains($cmdDetCmdId)) {
-            $this->cmd_det_cmd_id[] = $cmdDetCmdId;
-            $cmdDetCmdId->setDetCmdCmdId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCmdDetCmdId(DetailCommande $cmdDetCmdId): self
-    {
-        if ($this->cmd_det_cmd_id->removeElement($cmdDetCmdId)) {
-            // set the owning side to null (unless already changed)
-            if ($cmdDetCmdId->getDetCmdCmdId() === $this) {
-                $cmdDetCmdId->setDetCmdCmdId(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCmdReference(): ?string
-    {
-        return $this->cmdReference;
-    }
-
-    public function setCmdReference(string $cmdReference): self
-    {
-        $this->cmdReference = $cmdReference;
-
-        return $this;
-    }
-
-    public function getCmdStripIdSession(): ?string
-    {
-        return $this->cmdStripIdSession;
-    }
-
-    public function setCmdStripIdSession(?string $cmdStripIdSession): self
-    {
-        $this->cmdStripIdSession = $cmdStripIdSession;
 
         return $this;
     }

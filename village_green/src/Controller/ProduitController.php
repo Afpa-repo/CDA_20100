@@ -5,12 +5,11 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/produit")
@@ -19,9 +18,6 @@ class ProduitController extends AbstractController
 {
     /**
      * @Route("/", name="produit_index", methods={"GET"})
-     * @param Request $request
-     * @param PaginatorInterface $paginator
-     * @return Response
      */
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
@@ -36,21 +32,14 @@ class ProduitController extends AbstractController
             // 12 // Nombre de résultats par page
             // );
 
-//        $produits = $paginator->paginate(
-//            $donnees, // Requête contenant les données à paginer (ici nos produits)
-//            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-//            15 // Nombre de résultats par page
-//        );
-
         return $this->render('produit/index.html.twig', [
-            'produits' => $produits
+            'produits' => $donnees,
         ]);
     }
 
     /**
      * @Route("/new", name="produit_new", methods={"GET","POST"})
      * @param Request $request
-     * @param SluggerInterface $slugger
      * @return Response
      */
     public function new(Request $request, SluggerInterface $slugger): Response
@@ -65,19 +54,19 @@ class ProduitController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupération de la saisi sur l'upload
             $pictureFile = $form['proPhoto']->getData();
-            // Vérification s'il y a un upload photo
-            if ($pictureFile)
-            {
-                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+                // Vérification s'il y a un upload photo
+                if ($pictureFile)
+                {
+                    $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
 
                 // Assignation de la valeur à la propriété picture à l'aide du setter
                 $produit->setProPhoto($newFilename);
                 try
                 {
                     // Déplacement du fichier vers le répertoire de destination sur le serveur
-                    $pictureFile->move(
+                        $pictureFile->move(
                         $this->getParameter('photo_directory'),
                         $newFilename
                     );
@@ -85,7 +74,7 @@ class ProduitController extends AbstractController
                 {
                     // Gestion de l'erreur si le déplacement ne s'est pas effectué
                 }
-            }
+                }
             // Si le formulaire est soumis et valide, alors nous allons utiliser l'objet EntityManager de Doctrine. Il nous permet d'envoyer et d'aller chercher des objets dans la base de données
             $entityManager = $this->getDoctrine()->getManager();
             //Ensuite nous allons persister notre entité, c'est-à-dire que nous allons la préparer à la sauvegarde des données saisies
@@ -93,7 +82,7 @@ class ProduitController extends AbstractController
             // Enfin, pour envoyer les données dans la base, nous utilisons la méthode flush()
             $entityManager->flush();
 
-            // Message de succès de modification du produit
+            // Message de succès d'ajout du produit
             $this->addFlash(
                 'success',
                 'Produit ajouté avec succès !!'
@@ -121,10 +110,6 @@ class ProduitController extends AbstractController
 
     /**
      * @Route("/{proId}/edit", name="produit_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Produit $produit
-     * @param SluggerInterface $slugger
-     * @return Response
      */
     public function edit(Request $request, Produit $produit, SluggerInterface $slugger): Response
     {
@@ -132,43 +117,36 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if(!empty($form['proPhoto'])){
-                // Récupération de la saisi sur l'upload
-                $pictureFile = $form['proPhoto']->getData();
+            if(!empty($form['proPhoto']))
+            {
+                
+            // Récupération de la saisi sur l'upload
+            $pictureFile = $form['proPhoto']->getData();
                 // Vérification s'il y a un upload photo
-                    if ($pictureFile)
-                    {
-                        $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                        $safeFilename = $slugger->slug($originalFilename);
-                        $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+                if ($pictureFile)
+                {
+                    $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
 
-                        // Assignation de la valeur à la propriété picture à l'aide du setter
-                        $produit->setProPhoto($newFilename);
-                            try
-                            {
-                                // Déplacement du fichier vers le répertoire de destination sur le serveur
-                                $pictureFile->move(
-                                    $this->getParameter('photo_directory'),
-                                    $newFilename
-                                );
-                            } catch (FileException $e)
-                            {
-                                // Gestion de l'erreur si le déplacement ne s'est pas effectué
-                            }
-                    }
+                // Assignation de la valeur à la propriété picture à l'aide du setter
+                $produit->setProPhoto($newFilename);
+                try
+                {
+                    // Déplacement du fichier vers le répertoire de destination sur le serveur
+                        $pictureFile->move(
+                        $this->getParameter('photo_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e)
+                {
+                    // Gestion de l'erreur si le déplacement ne s'est pas effectué
+                }
+                }
+
             }
-            // Si le formulaire est soumis et valide, alors nous allons utiliser l'objet EntityManager de Doctrine. Il nous permet d'envoyer et d'aller chercher des objets dans la base de données
-            $entityManager = $this->getDoctrine()->getManager();
-            //Ensuite nous allons persister notre entité, c'est-à-dire que nous allons la préparer à la sauvegarde des données saisies
-            $entityManager->persist($produit);
-            // Enfin, pour envoyer les données dans la base, nous utilisons la méthode flush()
-            $entityManager->flush();
 
-            // Message de succès d'ajout du produit
-            $this->addFlash(
-                'success',
-                'Produit modifié avec succès !!'
-            );
+            $this->getDoctrine()->getManager()->flush();
 
             // Message de succès de modification du produit
             $this->addFlash(

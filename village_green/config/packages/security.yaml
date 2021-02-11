@@ -11,13 +11,12 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
+            anonymous: true
             logout:
                 path: /logout
                 target: /
             form_login:
                 check_path: /login
-                login_path: /login
             provider: from_database
 
             # activate different ways to authenticate
@@ -29,10 +28,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^/commande, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_USER }
+
+    # Pour l'encodage du mot de passe
     encoders:
-        App\Entity\Client:
-            algorithm: bcrypt
-            cost: 12
+            App\Entity\Client:
+                algorithm: bcrypt
+                cost: 12

@@ -4,12 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Form\ClientType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
  * @Route("/client")
@@ -32,9 +31,6 @@ class ClientController extends AbstractController
 
     /**
      * @Route("/new", name="client_new", methods={"GET","POST"})
-     * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @return Response
      */
     public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -43,11 +39,10 @@ class ClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $client->setCliRole('utilisateur');
             $client->setCliRegl('A définir');
             $client->setCliCateg('A définir');
             $client->setCliCoeff('1');
+            $client->setCliRole('utilisateur');
             $client->setCliPassword(
                 $passwordEncoder->encodePassword(
                     $client,
@@ -58,11 +53,13 @@ class ClientController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
+            // Message de validation de l'inscription
             $this->addFlash(
                 'success',
-                'Votre inscription est validée'
+                'Votre inscription est validée !!'
             );
 
+            // Et nous redirigeons vers la page d'accueil
             return $this->redirectToRoute('home');
         }
 
@@ -74,8 +71,6 @@ class ClientController extends AbstractController
 
     /**
      * @Route("/{cliId}", name="client_show", methods={"GET"})
-     * @param Client $client
-     * @return Response
      */
     public function show(Client $client): Response
     {
@@ -86,9 +81,6 @@ class ClientController extends AbstractController
 
     /**
      * @Route("/{cliId}/edit", name="client_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Client $client
-     * @return Response
      */
     public function edit(Request $request, Client $client): Response
     {
@@ -98,11 +90,14 @@ class ClientController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $this->getDoctrine()->getManager()->flush();
+
             $this->addFlash(
                 'success',
                 'Modification du profil validée'
             );
+
             return $this->redirectToRoute('home');
         }
 
@@ -114,9 +109,6 @@ class ClientController extends AbstractController
 
     /**
      * @Route("/{cliId}", name="client_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Client $client
-     * @return Response
      */
     public function delete(Request $request, Client $client): Response
     {
@@ -127,6 +119,12 @@ class ClientController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('client_index');
+        // Message de succès de suppression du compte
+        $this->addFlash(
+            'success',
+            'Profil supprimé avec succès !!'
+        );
+
+        return $this->redirectToRoute('home');
     }
 }

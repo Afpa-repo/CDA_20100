@@ -1,35 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Notre catalogue{% endblock %}
+{% block title %}Liste des instruments{% endblock %}
 
 {% block body %}
-    <h1 class="text-center mb-5">Notre catalogue</h1>
-    <div class="row d-flex justify-content-center grid">
-        {% for produit in produits %}
-            <div class="card text-center mb-2 ml-2 mr-2 {{ produit.proSRub }}">
-                <div class="card-header bg-white {{ produit.proSRub }}">
-                <img src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="photo_produit">
-                </div>
-            <div class="card-body {{ produit.proSRub }}">
-                <h5 class="card-title">{{ produit.proLib }}</h5>
-                    <p class="card-text">{{ produit.proPrixAchat }}&nbsp;&euro;</p>
+
+<h1 class="text-center mb-5">Notre catalogue</h1>
+
+<div class="row d-flex justify-content-center grid"> <!-- grid fait référence au .grid appelé dans le script.js -->
+
+{% for produit in produits %} <!-- produits fait référence à $produits dans ProduitController.php -->
+
+    <div class="card text-center mb-2 ml-2 mr-2 {{ produit.proSRub }}">
+            <div class="card-header bg-white {{ produit.proSRub }}">
+                <img src="{{asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="Photo disque">
             </div>
-                <div class="card-footer {{ produit.proSRub }}">
-                    <a href="{{ path('produit_show', {'proId' : produit.proId}) }}" type="button" class="btn btn-info">Détails</a>
-                    <a href="{{ path('add_to_cart', {'id' : produit.proId}) }}" type="button" class="btn btn-success">Ajouter au panier</a>
-                </div>
+
+            <div class="card-body bg-light {{ produit.proSRub }}">
+                <h5 class="card-title">{{ produit.proLib }}</h5>
+                <p class="card-text text-truncate">Prix : {{ produit.proPrixAchat }} €</p>
+                <p class="card-text text-truncate">Stock : {{ produit.proStock }} pièce(s)</p>
+            </div>
+
+            <div class="card-footer bg-white {{ produit.proSRub }}">
+                <a href="{{ path('produit_show', {'proId': produit.proId}) }}" type="button" class="btn btn-info">DETAILS</a>
+                <a href="" type="button" class="btn btn-success">AJOUTER AU PANIER</a>
+            </div>
     </div>
-        {% else %}
-            <tr>
-                <td colspan="8">Aucun article trouvé</td>
-            </tr>
-        {% endfor %}
-    </div>
-{#    <div class="row d-flex justify-content-center">#}
-{#    {{ knp_pagination_render(produits) }}#}
-{#    </div>#}
-{% endblock %}
-    
+
+{% else %}
+    <tr>
+        <td colspan="8">no records found</td>
+    </tr>
+{% endfor %}
+
+</div>
 
 {#<div class="row d-flex justify-content-center">
 Affichage de la pagination des produits
